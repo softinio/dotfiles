@@ -1,0 +1,323 @@
+ if 0 | endif
+
+ if filereadable(expand("~/plugins.vim"))
+  source ~/plugins.vim
+ endif
+
+ " Required:
+syntax on
+filetype plugin on
+filetype plugin indent on
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Basic Options
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" {{{
+if ! has('nvim')
+    set nocompatible
+    set incsearch
+    set t_Co=256
+    set laststatus=2
+    set backspace=indent,eol,start 
+    set autoindent nosmartindent
+    set hlsearch
+else
+    set nohlsearch
+    let g:python_host_prog = '/usr/local/bin/python'
+    let g:python3_host_prog = '/usr/local/bin/python3'
+    :let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+    :let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+    :tnoremap <Esc> <C-\><C-n>
+    :tnoremap <A-h> <C-\><C-n><C-w>h
+    :tnoremap <A-j> <C-\><C-n><C-w>j
+    :tnoremap <A-k> <C-\><C-n><C-w>k
+    :tnoremap <A-l> <C-\><C-n><C-w>l
+    :nnoremap <A-h> <C-w>h
+    :nnoremap <A-j> <C-w>j
+    :nnoremap <A-k> <C-w>k
+    :nnoremap <A-l> <C-w>l
+endif
+
+set fileformat=unix
+set encoding=utf-8
+set fileencoding=utf-8
+set fileencodings=utf-8
+" silent! colorscheme Tomorrow-Night-Bright
+let g:seoul256_background = 233
+silent! colorscheme seoul256
+set background=dark
+" set guifont=Source\ Code\ Pro:h12
+set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Nerd\ Font:h12
+set termguicolors
+set shortmess=atI
+set textwidth=79
+set colorcolumn=80
+set cursorline
+set tabstop=4
+set smarttab
+set softtabstop=4
+set shiftwidth=4
+set expandtab
+set number
+set numberwidth=5
+set showcmd
+set display+=lastline
+set autochdir
+set autoread
+let g:netrw_list_hide= '.*\.pyc$'
+nmap <F8> :TagbarToggle<CR>
+
+set clipboard=unnamed
+set encoding=utf-8
+set hidden
+set history=5000
+set laststatus=2
+"set paste
+set pastetoggle=<F2>
+
+set showmatch
+set tags=./.tags,.tags,./tags,tags
+
+set list
+set listchars=tab:>.,trail:.,extends:#,nbsp:.
+autocmd filetype html,xml set listchars-=tab:>.
+
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+nnoremap <C-a> <Home>
+nnoremap <C-e> <End>
+
+" Get dot command repeatability in visual mode
+xnoremap . :normal.<CR>
+
+let python_highlight_all=1
+
+let g:ag_prg="/usr/local/bin/ag --vimgrep"
+let g:ag_working_path_mode="r"
+
+"Wildmenu completion: use for file exclusions
+" Wildmenu completion: use for file exclusions"
+set wildmenu
+set wildmode=list:longest
+set wildignore+=.hg,.git,.svn " Version Controls"
+set wildignore+=*.aux,*.out,*.toc "Latex Indermediate files"
+set wildignore+=*.jpg,*.bmp,*.gif,*.png,*.jpeg "Binary Imgs"
+set wildignore+=*.o,*.obj,*.exe,*.dll,*.manifest "Compiled Object files"
+set wildignore+=*.spl "Compiled speolling world list"
+set wildignore+=*.sw? "Vim swap files"
+set wildignore+=*.DS_Store "OSX SHIT"
+set wildignore+=*.luac "Lua byte code"
+set wildignore+=migrations "Django migrations"
+set wildignore+=*.pyc "Python Object codes"
+set wildignore+=*.orig "Merge resolution files"
+set wildignore+=*.class "java/scala class files"
+set wildignore+=*/target/* "sbt target directory"
+
+let NERDTreeIgnore=['\.pyc$', '\~$', 'target'] "ignore files in NERDTree
+let NERDTreeRespectWildIgnore=1
+" }}}
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" General
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" {{{
+let mapleader = "\<space>"
+map! jj <ESC>
+  
+map <leader>m :NERDTreeToggle<CR>
+" jump back to nerdtree
+map <leader>n :NERDTree<CR>
+" reveal in side bar
+map <leader>e :NERDTreeFind<CR>
+let NERDTreeShowHidden=1
+" clipboard
+map <leader>c :w !pbcopy <CR><CR>
+"Quickly edit/reload the vimrc file
+nmap <silent> <leader>ev :e $MYVIMRC<CR>
+nmap <silent> <leader>sv :so $MYVIMRC<CR>
+" FZF
+imap <c-x><c-o> <plug>(fzf-complete-line)
+map <leader>b :Buffers<cr>
+map <leader>f :Files<cr>
+map <leader>g :GFiles<cr>
+map <leader>t :Tags<cr>
+" yapf
+noremap <leader>y :YapfFormat<CR>
+vnoremap <leader>yf :YapfFormat 'full'<CR>
+" }}}
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Backups
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" {{{
+set backup
+set noswapfile
+
+set undodir=~/.vim/tmp/undo//
+set backupdir=~/.vim/tmp/backup//
+set directory=~/.vim/tmp/swap//
+
+" Make those folders automatically if they don't already exist.
+if !isdirectory(expand(&undodir))
+    call mkdir(expand(&undodir), "p")
+endif
+if !isdirectory(expand(&backupdir))
+    call mkdir(expand(&backupdir), "p")
+endif
+if !isdirectory(expand(&directory))
+    call mkdir(expand(&directory), "p")
+endif
+
+" }}}
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Plugin Specific Stuff
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" {{{
+"Ack 
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
+
+" Airline {{{
+let g:airline_enabled=1
+let g:airline_powerline_fonts=1
+let g:airline_theme='tomorrow'
+"set guifont=Inconsolata\ for\ Powerline
+"}}}
+
+"Scala
+let ensime_server_v2=1
+autocmd BufWritePost *.scala silent :EnTypeCheck
+nnoremap <localleader>ds :EnTypeCheck<CR>
+au FileType scala nnoremap <localleader>df :EnDeclarationSplit v<CR>
+"let g:syntastic_scala_checkers=['scalac', 'scalastyle']
+
+"C#
+let g:OmniSharp_server_type = 'roslyn'
+
+autocmd CursorMovedI *  if pumvisible() == 0|silent! pclose|endif
+autocmd InsertLeave * if pumvisible() == 0|silent! pclose|endif
+"}}}
+
+" TagBar {{{
+nnoremap <leader>tb :TagbarToggle<cr>
+"}}}
+
+"}}}
+
+"rainbow
+let g:rainbow_active = 1
+
+let g:rainbow_conf = {
+    \   'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick'],
+    \   'ctermfgs': ['lightblue', 'lightyellow', 'lightcyan', 'lightmagenta'],
+    \   'operators': '_,_',
+    \   'parentheses': ['start=/(/ end=/)/ fold', 'start=/\[/ end=/\]/ fold', 'start=/{/ end=/}/ fold'],
+    \   'separately': {
+    \       '*': {},
+    \       'tex': {
+    \           'parentheses': ['start=/(/ end=/)/', 'start=/\[/ end=/\]/'],
+    \       },
+    \       'lisp': {
+    \           'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick', 'darkorchid3'],
+    \       },
+    \       'vim': {
+    \           'parentheses': ['start=/(/ end=/)/', 'start=/\[/ end=/\]/', 'start=/{/ end=/}/ fold', 'start=/(/ end=/)/ containedin=vimFuncBody', 'start=/\[/ end=/\]/ containedin=vimFuncBody', 'start=/{/ end=/}/ fold containedin=vimFuncBody'],
+    \       },
+    \       'html': {
+    \           'parentheses': ['start=/\v\<((area|base|br|col|embed|hr|img|input|keygen|link|menuitem|meta|param|source|track|wbr)[ >])@!\z([-_:a-zA-Z0-9]+)(\s+[-_:a-zA-Z0-9]+(\=("[^"]*"|'."'".'[^'."'".']*'."'".'|[^ '."'".'"><=`]*))?)*\>/ end=#</\z1># fold'],
+    \       },
+    \       'css': 0,
+    \   }
+    \}
+
+"smartpairs
+"Key for running smartpairs in all modes (select/delete/change/yank)
+"default is 'v'
+let g:smartpairs_key = 'v'
+
+"Key for running smartpairs in the selection mode 
+"(extend current selection to the next pairs)
+"default is 'v'
+let g:smartpairs_nextpairs_key = 'v'
+
+"Enable 'uber mode' (see above)
+"default is 1
+let g:smartpairs_uber_mode = 1
+
+"Start selection from word
+"If there is no regions then select word
+"default is 0
+let g:smartpairs_start_from_word = 1
+
+"Key for running smartpairs in the selection mode
+"for extending selection with IN-mod (like vi")
+"default is 'm'
+let g:smartpairs_nextpairs_key_i = 'm'
+
+"Key for running smartpairs in the selection mode 
+"for extending selection with ABOVE-mod (like va")
+"default is 'M'
+let g:smartpairs_nextpairs_key_a = 'M'
+
+"Keys combination for canceling last smartpais selection
+"default is '<C-V>' Ctrl+Shift+v
+"under macvim you can use Cmd key e.g. <D-V> -> Cmd+Shift+v
+let g:smartpairs_revert_key = '<C-V>'
+
+"Smartpairs works only with 20 lines before cursor position
+"but you can changes this limit:
+let g:smartpairs_maxdepth = 20
+
+" vim-markdown
+let g:vim_markdown_folding_disabled = 1
+let g:vim_markdown_toml_frontmatter = 1
+
+"nerdtree-git-plugin
+let g:NERDTreeIndicatorMapCustom = {
+    \ "Modified"  : "✹",
+    \ "Staged"    : "✚",
+    \ "Untracked" : "✭",
+    \ "Renamed"   : "➜",
+    \ "Unmerged"  : "═",
+    \ "Deleted"   : "✖",
+    \ "Dirty"     : "✗",
+    \ "Clean"     : "✔︎",
+    \ "Unknown"   : "?"
+    \ }
+
+" Enable omni completion.
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+
+"yapf
+" map <C-Y> :call yapf#YAPF()<cr>
+" imap <C-Y> <c-o>:call yapf#YAPF()<cr>
+"
+" Custom Functions
+" Switch to previous buffer mapped to tab
+function SwitchBuffer()
+  b#
+endfunction
+
+nmap <Tab> :call SwitchBuffer()<CR>
+
+" Let indentLine use current conceal options
+let g:indentLine_conceallevel  = &conceallevel
+let g:indentLine_concealcursor = &concealcursor
+
+" Language Client plugin
+let g:LanguageClient_serverCommands = {
+    \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
+    \ 'javascript': ['/opt/javascript-typescript-langserver/lib/language-server-stdio.js'],
+    \ }
+
+" Automatically start language servers.
+let g:LanguageClient_autoStart = 1
+
+nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
+nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>

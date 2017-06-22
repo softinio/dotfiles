@@ -1,0 +1,13 @@
+.idea/
+.vscode/
+.tern-project
+.python-version
+.env
+.env_file
+.DS_Store
+.cache
+.node-version
+tags
+.ensime
+.ensime_cache
+

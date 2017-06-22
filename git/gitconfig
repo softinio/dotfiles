@@ -1,0 +1,27 @@
+[user]
+    user = Salar Rahmanian
+    email = <your email address>
+    name = Salar Rahmanian
+
+[core]
+    trustctime = false
+        editor = vim
+    excludesfile = ~/.gitignore
+	autocrlf = input
+[push]
+    default = simple
+[merge]
+    tool = opendiff
+[diff]
+    tool = opendiff
+[branch]
+    autosetupmerge = always
+    autosetuprebase = always
+[mergetool]
+    keepBackup = false
+    prompt = false
+[difftool]
+    prompt = false
+
+[init]
+	templatedir = ~/.git_template
