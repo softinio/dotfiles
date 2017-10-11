@@ -22,7 +22,7 @@ if ! has('nvim')
     set hlsearch
 else
     set nohlsearch
-    let g:python_host_prog = '/usr/local/bin/python'
+    let g:python_host_prog = '/Users/salar.rahmanian/.pyenv/versions/vim/bin/python'
     let g:python3_host_prog = '/usr/local/bin/python3'
     :let $NVIM_TUI_ENABLE_TRUE_COLOR=1
     :let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
@@ -96,6 +96,8 @@ let python_highlight_all=1
 
 let g:ag_prg="/usr/local/bin/ag --vimgrep"
 let g:ag_working_path_mode="r"
+nnoremap <Leader>* :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+
 
 "Wildmenu completion: use for file exclusions
 " Wildmenu completion: use for file exclusions"
@@ -107,7 +109,7 @@ set wildignore+=*.jpg,*.bmp,*.gif,*.png,*.jpeg "Binary Imgs"
 set wildignore+=*.o,*.obj,*.exe,*.dll,*.manifest "Compiled Object files"
 set wildignore+=*.spl "Compiled speolling world list"
 set wildignore+=*.sw? "Vim swap files"
-set wildignore+=*.DS_Store "OSX SHIT"
+set wildignore+=*.DS_Store "OSX files"
 set wildignore+=*.luac "Lua byte code"
 set wildignore+=migrations "Django migrations"
 set wildignore+=*.pyc "Python Object codes"
@@ -138,14 +140,17 @@ map <leader>c :w !pbcopy <CR><CR>
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
 nmap <silent> <leader>sv :so $MYVIMRC<CR>
 " FZF
+set rtp+=/usr/local/opt/fzf
 imap <c-x><c-o> <plug>(fzf-complete-line)
 map <leader>b :Buffers<cr>
 map <leader>f :Files<cr>
 map <leader>g :GFiles<cr>
 map <leader>t :Tags<cr>
+let $FZF_DEFAULT_COMMAND = 'ag -g ""'
+
 " yapf
-noremap <leader>y :YapfFormat<CR>
-vnoremap <leader>yf :YapfFormat 'full'<CR>
+" noremap <leader>y :YapfFormat<CR>
+" vnoremap <leader>yf :YapfFormat 'full'<CR>
 " }}}
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Backups
@@ -190,7 +195,7 @@ let ensime_server_v2=1
 autocmd BufWritePost *.scala silent :EnTypeCheck
 nnoremap <localleader>ds :EnTypeCheck<CR>
 au FileType scala nnoremap <localleader>df :EnDeclarationSplit v<CR>
-"let g:syntastic_scala_checkers=['scalac', 'scalastyle']
+autocmd filetype scala setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab
 
 "C#
 let g:OmniSharp_server_type = 'roslyn'
@@ -292,6 +297,7 @@ autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+autocmd FileType scala,sbt setlocal omnifunc=EnCompleteFunc#Complete
 
 "yapf
 " map <C-Y> :call yapf#YAPF()<cr>
@@ -312,7 +318,7 @@ let g:indentLine_concealcursor = &concealcursor
 " Language Client plugin
 let g:LanguageClient_serverCommands = {
     \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
-    \ 'javascript': ['/opt/javascript-typescript-langserver/lib/language-server-stdio.js'],
+    \ 'javascript': ['/usr/local/bin/javascript-typescript-stdio'],
     \ }
 
 " Automatically start language servers.
@@ -321,3 +327,4 @@ let g:LanguageClient_autoStart = 1
 nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
 nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
+
