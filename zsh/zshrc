@@ -3,10 +3,52 @@
 # Custom Completion Funcs
 fpath+=~/.zfunc
 
-# Source Prezto.
-if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
-  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+# zplug
+if [[ ! -d ~/.zplug ]]; then
+  git clone https://github.com/zplug/zplug ~/.zplug
+  source ~/.zplug/init.zsh && zplug update --self
 fi
+
+source ~/.zplug/init.zsh
+
+DEFAULT_USER=salar.rahmanian
+ZSH_THEME=dracula
+
+zplug "zplug/zplug"
+zplug denysdovhan/spaceship-zsh-theme, use:spaceship.zsh, from:github, as:theme
+zplug "modules/git", from:prezto 
+zplug "modules/history", from:prezto 
+zplug "modules/ssh", from:prezto 
+zplug "modules/terminal", from:prezto 
+zplug "modules/homebrew", from:prezto 
+zplug "modules/python", from:prezto 
+zplug "modules/node", from:prezto 
+zplug "lukechilds/zsh-better-npm-completion", defer:2
+zplug "zsh-users/zsh-completions"
+zplug "zsh-users/zsh-autosuggestions"
+if zplug check zsh-users/zsh-autosuggestions; then
+  ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=(history-substring-search-up history-substring-search-down) # Add history-substring-search-* widgets to list of widgets that clear the autosuggestion
+  ZSH_AUTOSUGGEST_CLEAR_WIDGETS=("${(@)ZSH_AUTOSUGGEST_CLEAR_WIDGETS:#(up|down)-line-or-history}") # Remove *-line-or-history widgets from list of widgets that clear the autosuggestion to avoid conflict with history-substring-search-* widgets
+fi
+zplug "zsh-users/zsh-syntax-highlighting"
+zplug "zsh-users/zsh-history-substring-search"
+if zplug check zsh-users/zsh-history-substring-search; then
+  zmodload zsh/terminfo
+  bindkey "$terminfo[cuu1]" history-substring-search-up
+  bindkey "$terminfo[cud1]" history-substring-search-down
+fi
+zplug "b4b4r07/enhancd", use:init.sh
+zplug "lukechilds/zsh-nvm"
+zplug "supercrabtree/k"
+
+if ! zplug check --verbose; then
+    printf "Install? [y/N]: "
+    if read -q; then
+        echo; zplug install
+    fi
+fi
+
+zplug load 
 
 # General
 export LANG=en_US.UTF-8
@@ -19,9 +61,6 @@ export EDITOR=nvim
 # Use CTAGS version installed via brew instead of xcode (used by vim plugin)
 export CTAGS=/usr/local/bin
 export PATH=$CTAGS:$PATH
-
-# Yarn
-export PATH=$PATH:/usr/local/Cellar/node/7.2.0/bin
 
 # Go Lang
 export GOPATH=$HOME/goprojects
@@ -49,6 +88,10 @@ alias dm="docker-machine"
 alias kb="kubectl"
 alias kp="kops"
 alias mk="minikube"
+alias kbc="kubectl config current-context"
+alias kbmini="kubectl config use-context minikube"
+alias kbpod="kubectl get pods"
+alias pj='python -m json.tool'
 
 # Shell improvements
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
