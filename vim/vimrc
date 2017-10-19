@@ -94,11 +94,6 @@ xnoremap . :normal.<CR>
 
 let python_highlight_all=1
 
-let g:ag_prg="/usr/local/bin/ag --vimgrep"
-let g:ag_working_path_mode="r"
-nnoremap <Leader>* :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
-
-
 "Wildmenu completion: use for file exclusions
 " Wildmenu completion: use for file exclusions"
 set wildmenu
@@ -178,10 +173,17 @@ endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin Specific Stuff
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" {{{
+"Command for ripgrep
+command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>).'| tr -d "\017"', 1, <bang>0)
+
 "Ack 
-if executable('ag')
-  let g:ackprg = 'ag --vimgrep'
+if executable("rg")
+    set grepprg=rg\ --vimgrep\ --no-heading
+    set grepformat=%f:%l:%c:%m,%f:%l:%m
 endif
+let g:ackprg='rg --vimgrep --no-heading'
+set grepprg=rg\ --vimgrep
+nnoremap <Leader>* :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 
 " Airline {{{
 let g:airline_enabled=1
@@ -196,6 +198,10 @@ autocmd BufWritePost *.scala silent :EnTypeCheck
 nnoremap <localleader>ds :EnTypeCheck<CR>
 au FileType scala nnoremap <localleader>df :EnDeclarationSplit v<CR>
 autocmd filetype scala setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab
+
+"Rust
+autocmd BufRead *.rs :setlocal tags=./rusty-tags.vi;/,$RUST_SRC_PATH/rusty-tags.vi
+autocmd BufWrite *.rs :silent! exec "!rusty-tags vi --quiet --start-dir=" . expand('%:p:h') . "&" <bar> redraw!
 
 "C#
 let g:OmniSharp_server_type = 'roslyn'
