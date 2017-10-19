@@ -141,7 +141,6 @@ map <leader>b :Buffers<cr>
 map <leader>f :Files<cr>
 map <leader>g :GFiles<cr>
 map <leader>t :Tags<cr>
-let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 
 " yapf
 " noremap <leader>y :YapfFormat<CR>
