@@ -50,6 +50,7 @@ call plug#begin('~/.vim/plugged')
  Plug 'plasticboy/vim-markdown'
  Plug 'aliou/markoff.vim'
  Plug 'docker/docker' , {'rtp': '/contrib/syntax/vim/'}
+ Plug 'rhysd/devdocs.vim'
 
  if filereadable(expand("~/.plugins.vim.local"))
   source ~/.plugins.vim.local
