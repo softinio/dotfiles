@@ -109,6 +109,11 @@ alias pj='python -m json.tool'
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 source <(kubectl completion zsh)
 
+# Logbook
+function lb() {
+    vim ~/logbook/$(date '+%Y-%m-%d').md
+}
+
 # k8
 minikube status | grep -a "Stopped" &> /dev/null
 if [ $? -ne 0 ]; then

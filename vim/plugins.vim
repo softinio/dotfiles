@@ -39,8 +39,6 @@ call plug#begin('~/.vim/plugged')
  Plug 'othree/html5-syntax.vim'
  Plug 'lilydjwg/colorizer'
  Plug 'ensime/ensime-vim', { 'do': ':UpdateRemotePlugins' }
- Plug 'derekwyatt/vim-scala'
- Plug 'derekwyatt/vim-sbt'
  Plug 'OmniSharp/Omnisharp-vim'
  Plug 'Yggdroot/indentLine'
  Plug 'ryanoasis/vim-devicons'
@@ -51,6 +49,17 @@ call plug#begin('~/.vim/plugged')
  Plug 'aliou/markoff.vim'
  Plug 'docker/docker' , {'rtp': '/contrib/syntax/vim/'}
  Plug 'rhysd/devdocs.vim'
+ Plug 'jsfaint/gen_tags.vim'
+
+ " Vim Org Mode related plugins
+ Plug 'jceb/vim-orgmode'
+ Plug 'vim-scripts/utl.vim'
+ Plug 'tpope/vim-repeat'
+ Plug 'vim-scripts/taglist.vim'
+ Plug 'tpope/vim-speeddating'
+ Plug 'chrisbra/NrrwRgn'
+ Plug 'mattn/calendar-vim'
+ Plug 'vim-scripts/SyntaxRange'
 
  if filereadable(expand("~/.plugins.vim.local"))
   source ~/.plugins.vim.local

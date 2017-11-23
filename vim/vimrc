@@ -54,7 +54,7 @@ set colorcolumn=80
 set cursorline
 set tabstop=4
 set smarttab
-set softtabstop=4
+set softtabstop=0
 set shiftwidth=4
 set expandtab
 set number
@@ -63,7 +63,6 @@ set showcmd
 set display+=lastline
 set autochdir
 set autoread
-let g:netrw_list_hide= '.*\.pyc$'
 nmap <F8> :TagbarToggle<CR>
 
 set clipboard=unnamed
@@ -71,8 +70,7 @@ set encoding=utf-8
 set hidden
 set history=5000
 set laststatus=2
-"set paste
-set pastetoggle=<F2>
+set pastetoggle=<F3>
 
 set showmatch
 set tags=./.tags,.tags,./tags,tags
@@ -143,8 +141,9 @@ map <leader>g :GFiles<cr>
 map <leader>t :Tags<cr>
 
 " yapf
-" noremap <leader>y :YapfFormat<CR>
-" vnoremap <leader>yf :YapfFormat 'full'<CR>
+noremap <leader>y :YapfFormat<CR>
+vnoremap <leader>yf :YapfFormat 'full'<CR>
+autocmd InsertLeave * YapfFormater
 " }}}
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Backups
@@ -332,6 +331,19 @@ let g:LanguageClient_autoStart = 1
 nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
 nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
+
+" Sarsi for quickfix
+if !empty(glob("sarsi-nvim"))
+    call rpcstart('sarsi-nvim')
+endif
+
+" netrw settings
+let g:netrw_list_hide= '.*\.pyc$'
+let g:netrw_liststyle = 3
+let g:netrw_banner = 0
+let g:netrw_browse_split = 2
+let g:netrw_winsize = 25
+let g:netrw_altv = 1
 
 " Devdocs to replace K
 nmap K <Plug>(devdocs-under-cursor)
