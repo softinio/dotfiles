@@ -54,8 +54,12 @@ zplug load
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export TERM=xterm-256color
+
+# vim / Neovim
 alias vim="nvim"
-alias notes="cd ~/notes; nvim"
+alias notes="cd ~/notes; nvim ."
+alias nvimi="nvim +PlugInstall +UpdateRemotePlugins +qa"
+alias nvimu="nvim +PlugUpgrade +PlugUpdate +UpdateRemotePlugins +qa"
 export EDITOR=nvim
 
 # Use CTAGS version installed via brew instead of xcode (used by vim plugin)
@@ -87,7 +91,7 @@ export JAVA_HOME=$(/usr/libexec/java_home)
 
 # Scala
 export SCALA_HOME=/usr/local/opt/scala/idea
-export PATH=$PATH:$SCALA_HOME/bin
+export PATH=$PATH:$SCALA_HOME/bin:~/.dotfiles/bin
 export BROWSER="firefox %s"
 
 # C#
@@ -122,3 +126,4 @@ else
     echo "minikube not running"
 fi
 
+[[ -f ~/.zshrc.local ]] && . ~/.zshrc.local
