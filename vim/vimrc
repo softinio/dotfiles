@@ -303,10 +303,6 @@ autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 autocmd FileType scala,sbt setlocal omnifunc=EnCompleteFunc#Complete
 
-"yapf
-" map <C-Y> :call yapf#YAPF()<cr>
-" imap <C-Y> <c-o>:call yapf#YAPF()<cr>
-"
 " Custom Functions
 " Switch to previous buffer mapped to tab
 function SwitchBuffer()
@@ -323,12 +319,13 @@ let g:indentLine_concealcursor = &concealcursor
 let g:LanguageClient_serverCommands = {
     \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
     \ 'javascript': ['/usr/local/bin/javascript-typescript-stdio'],
+    \ 'scala': ['node', '~/.dotfiles/bin/sbt-server-stdio.js'],
     \ }
 
 " Automatically start language servers.
 let g:LanguageClient_autoStart = 1
 
-nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
+nnoremap <silent> L :call LanguageClient_textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
 nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
 
@@ -344,6 +341,13 @@ let g:netrw_banner = 0
 let g:netrw_browse_split = 2
 let g:netrw_winsize = 25
 let g:netrw_altv = 1
+
+" Ultisnips
+let g:UltiSnipsExpandTrigger="<C-u>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+let g:UltiSnipsEditSplit="vertical"
+let g:UltiSnipsSnippetsDir="~/.dotfiles/snippets"
 
 " Devdocs to replace K
 nmap K <Plug>(devdocs-under-cursor)

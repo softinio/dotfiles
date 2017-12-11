@@ -9,7 +9,7 @@ call plug#begin('~/.vim/plugged')
  Plug 'vim-airline/vim-airline'
  Plug 'vim-airline/vim-airline-themes'
  Plug 'w0rp/ale'
- Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
+ Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': ':UpdateRemotePlugins' }
  Plug 'roxma/nvim-completion-manager'
  Plug 'rust-lang/rust.vim'
  Plug 'racer-rust/vim-racer'
@@ -33,6 +33,7 @@ call plug#begin('~/.vim/plugged')
  Plug 'Chiel92/vim-autoformat'
  Plug 'ervandew/supertab'
  Plug 'drinksober/nvim-yapf-formater'
+ Plug 'brooth/far.vim'
 
  Plug 'vim-scripts/indentpython.vim'
  Plug 'fatih/vim-go'
@@ -50,6 +51,9 @@ call plug#begin('~/.vim/plugged')
  Plug 'docker/docker' , {'rtp': '/contrib/syntax/vim/'}
  Plug 'rhysd/devdocs.vim'
  Plug 'jsfaint/gen_tags.vim'
+
+ Plug 'SirVer/ultisnips'
+ Plug 'honza/vim-snippets'
 
  " Vim Org Mode related plugins
  Plug 'jceb/vim-orgmode'
