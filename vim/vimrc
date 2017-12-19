@@ -311,10 +311,6 @@ endfunction
 
 nmap <Tab> :call SwitchBuffer()<CR>
 
-" Let indentLine use current conceal options
-let g:indentLine_conceallevel  = &conceallevel
-let g:indentLine_concealcursor = &concealcursor
-
 " Language Client plugin
 let g:LanguageClient_serverCommands = {
     \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
@@ -356,3 +352,7 @@ nmap K <Plug>(devdocs-under-cursor)
 "  autocmd!
 "  autocmd FileType c,cpp,rust,haskell,python nmap <buffer>K <Plug>(devdocs-under-cursor)
 " augroup END
+
+"Commands
+com! FormatJSON %!python -m json.tool
+
