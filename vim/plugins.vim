@@ -34,6 +34,7 @@ call plug#begin('~/.vim/plugged')
  Plug 'ervandew/supertab'
  Plug 'drinksober/nvim-yapf-formater'
  Plug 'brooth/far.vim'
+ Plug 'sbdchd/indentline.vim'
 
  Plug 'vim-scripts/indentpython.vim'
  Plug 'fatih/vim-go'
@@ -41,7 +42,6 @@ call plug#begin('~/.vim/plugged')
  Plug 'lilydjwg/colorizer'
  Plug 'ensime/ensime-vim', { 'do': ':UpdateRemotePlugins' }
  Plug 'OmniSharp/Omnisharp-vim'
- Plug 'Yggdroot/indentLine'
  Plug 'ryanoasis/vim-devicons'
  Plug 'cespare/vim-toml'
  Plug 'elzr/vim-json'
