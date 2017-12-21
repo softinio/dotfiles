@@ -141,9 +141,10 @@ map <leader>g :GFiles<cr>
 map <leader>t :Tags<cr>
 
 " yapf
-noremap <leader>y :YapfFormat<CR>
-vnoremap <leader>yf :YapfFormat 'full'<CR>
-autocmd InsertLeave * YapfFormater
+autocmd FileType python nnoremap <leader>y :0,$!yapf<Cr>
+" noremap <leader>y :YapfFormat<CR>
+" vnoremap <leader>yf :YapfFormat 'full'<CR>
+" autocmd InsertLeave * YapfFormater
 " }}}
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Backups
@@ -191,10 +192,6 @@ let g:airline_theme='tomorrow'
 "}}}
 
 "Scala
-let ensime_server_v2=1
-autocmd BufWritePost *.scala silent :EnTypeCheck
-nnoremap <localleader>ds :EnTypeCheck<CR>
-au FileType scala nnoremap <localleader>df :EnDeclarationSplit v<CR>
 autocmd filetype scala setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab
 
 "Rust
@@ -344,6 +341,11 @@ let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 let g:UltiSnipsEditSplit="vertical"
 let g:UltiSnipsSnippetsDir="~/.dotfiles/snippets"
+
+" neotags
+let g:neotags_tags_filename = "tags"
+let g:neotags_ctags_cmd = "ctags"
+let g:neotags_logging = 0
 
 " Devdocs to replace K
 nmap K <Plug>(devdocs-under-cursor)
