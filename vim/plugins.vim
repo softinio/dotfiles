@@ -32,7 +32,7 @@ call plug#begin('~/.vim/plugged')
  Plug 'gorkunov/smartpairs.vim'
  Plug 'Chiel92/vim-autoformat'
  Plug 'ervandew/supertab'
- Plug 'drinksober/nvim-yapf-formater'
+ " Plug 'drinksober/nvim-yapf-formater'
  Plug 'brooth/far.vim'
  Plug 'sbdchd/indentline.vim'
 
@@ -40,7 +40,6 @@ call plug#begin('~/.vim/plugged')
  Plug 'fatih/vim-go'
  Plug 'othree/html5-syntax.vim'
  Plug 'lilydjwg/colorizer'
- Plug 'ensime/ensime-vim', { 'do': ':UpdateRemotePlugins' }
  Plug 'OmniSharp/Omnisharp-vim'
  Plug 'ryanoasis/vim-devicons'
  Plug 'cespare/vim-toml'
@@ -50,7 +49,6 @@ call plug#begin('~/.vim/plugged')
  Plug 'aliou/markoff.vim'
  Plug 'docker/docker' , {'rtp': '/contrib/syntax/vim/'}
  Plug 'rhysd/devdocs.vim'
- Plug 'jsfaint/gen_tags.vim'
 
  Plug 'SirVer/ultisnips'
  Plug 'honza/vim-snippets'
@@ -64,6 +62,9 @@ call plug#begin('~/.vim/plugged')
  Plug 'chrisbra/NrrwRgn'
  Plug 'mattn/calendar-vim'
  Plug 'vim-scripts/SyntaxRange'
+
+ " GitLab hosted plugins
+ Plug 'https://gitlab.com/DanielSiepmann/neotags'
 
  if filereadable(expand("~/.plugins.vim.local"))
   source ~/.plugins.vim.local
