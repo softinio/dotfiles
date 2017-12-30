@@ -366,14 +366,6 @@ nmap <silent> <C-n> <Plug>(ale_next_wrap)
 let g:gen_tags#use_cache_dir = 1
 " let g:gen_tags#ctags_auto_gen = 1
 
-" Devdocs to replace K
-nmap K <Plug>(devdocs-under-cursor)
-" Above replaces for all langs if u want for specific langs use this instead:
-" augroup plugin-devdocs
-"  autocmd!
-"  autocmd FileType c,cpp,rust,haskell,python nmap <buffer>K <Plug>(devdocs-under-cursor)
-" augroup END
-
 "Commands
 com! FormatJSON %!python -m json.tool
 
