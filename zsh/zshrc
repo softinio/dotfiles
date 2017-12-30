@@ -67,6 +67,9 @@ export EDITOR=nvim
 export CTAGS=/usr/local/bin
 export PATH=$CTAGS:$PATH
 
+# GTAGS
+export GTAGSLIBPATH=/usr/include/
+
 # FZF and ripgrep
 # --files: List files that would be searched but do not search
 # --no-ignore: Do not respect .gitignore, etc...
@@ -94,9 +97,13 @@ export JAVA_HOME=$(/usr/libexec/java_home)
 export SCALA_HOME=/usr/local/opt/scala/idea
 export PATH=$PATH:$SCALA_HOME/bin:~/.dotfiles/bin
 export BROWSER="firefox %s"
+alias ssbt="sarsi-sbt"
 
 # C#
 export PATH=$PATH:/usr/local/share/dotnet
+
+# Haskell
+export PATH=/Users/salar.rahmanian/.local/bin:$PATH
 
 # aliases 
 alias dc="docker-compose"

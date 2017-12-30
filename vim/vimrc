@@ -51,6 +51,7 @@ set termguicolors
 set shortmess=atI
 set textwidth=79
 set colorcolumn=80
+set cursorcolumn
 set cursorline
 set tabstop=4
 set smarttab
@@ -139,6 +140,9 @@ map <leader>b :Buffers<cr>
 map <leader>f :Files<cr>
 map <leader>g :GFiles<cr>
 map <leader>t :Tags<cr>
+autocmd! FileType fzf tnoremap <buffer> <leader>q <c-c>
+nmap <leader>l :bnext<CR>
+nmap <leader>h :bprevious<CR>
 
 " yapf
 autocmd FileType python nnoremap <leader>y :0,$!yapf<Cr>
@@ -187,6 +191,8 @@ nnoremap <Leader>* :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 " Airline {{{
 let g:airline_enabled=1
 let g:airline_powerline_fonts=1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline_theme='tomorrow'
 "set guifont=Inconsolata\ for\ Powerline
 "}}}
@@ -298,7 +304,8 @@ autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-autocmd FileType scala,sbt setlocal omnifunc=EnCompleteFunc#Complete
+autocmd FileType scala,sbt setlocal omnifunc=LanguageClient#complete
+"scalacomplete#CompleteTags
 
 " Custom Functions
 " Switch to previous buffer mapped to tab
@@ -309,14 +316,14 @@ endfunction
 nmap <Tab> :call SwitchBuffer()<CR>
 
 " Language Client plugin
+let $LANGUAGECLIENT_DEBUG=1
+let g:LanguageClient_loggingLevel='DEBUG'
+let g:LanguageClient_autoStart = 0
 let g:LanguageClient_serverCommands = {
-    \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
+    \ 'rust': ['rustup', 'run', 'stable', 'rls'],
     \ 'javascript': ['/usr/local/bin/javascript-typescript-stdio'],
-    \ 'scala': ['node', '~/.dotfiles/bin/sbt-server-stdio.js'],
+    \ 'scala': ['node', expand('~/.dotfiles/bin/sbt-server-stdio.js')],
     \ }
-
-" Automatically start language servers.
-let g:LanguageClient_autoStart = 1
 
 nnoremap <silent> L :call LanguageClient_textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
@@ -342,10 +349,22 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 let g:UltiSnipsEditSplit="vertical"
 let g:UltiSnipsSnippetsDir="~/.dotfiles/snippets"
 
-" neotags
-let g:neotags_tags_filename = "tags"
-let g:neotags_ctags_cmd = "ctags"
-let g:neotags_logging = 0
+" Ale
+" Also see: ~/.vim/ftplugin for other ale related config
+let g:ale_completion_enabled = 1
+let g:airline#extensions#ale#enabled = 1
+let g:ale_fixers = {
+\   'javascript': ['eslint'],
+\   'python': ['yapf'],
+\   'scala': ['scalafmt'],
+\}
+let g:ale_fix_on_save = 1
+nmap <silent> <C-p> <Plug>(ale_previous_wrap)
+nmap <silent> <C-n> <Plug>(ale_next_wrap)
+
+" ctags
+let g:gen_tags#use_cache_dir = 1
+let g:gen_tags#ctags_auto_gen = 1
 
 " Devdocs to replace K
 nmap K <Plug>(devdocs-under-cursor)

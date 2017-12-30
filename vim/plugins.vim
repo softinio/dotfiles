@@ -9,11 +9,13 @@ call plug#begin('~/.vim/plugged')
  Plug 'vim-airline/vim-airline'
  Plug 'vim-airline/vim-airline-themes'
  Plug 'w0rp/ale'
- Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': ':UpdateRemotePlugins' }
+ Plug 'autozimu/LanguageClient-neovim', {'tag': 'binary-*-x86_64-apple-darwin' }
  Plug 'roxma/nvim-completion-manager'
  Plug 'rust-lang/rust.vim'
  Plug 'racer-rust/vim-racer'
  Plug 'roxma/nvim-cm-racer'
+ Plug 'mhartington/nvim-typescript'
+ Plug 'HerringtonDarkholme/yats.vim'
  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
  Plug 'junegunn/fzf.vim'
  Plug 'junegunn/seoul256.vim'
@@ -30,11 +32,10 @@ call plug#begin('~/.vim/plugged')
  Plug 'mileszs/ack.vim'
  Plug 'luochen1990/rainbow'
  Plug 'gorkunov/smartpairs.vim'
- Plug 'Chiel92/vim-autoformat'
  Plug 'ervandew/supertab'
- " Plug 'drinksober/nvim-yapf-formater'
  Plug 'brooth/far.vim'
- Plug 'sbdchd/indentline.vim'
+ Plug 'jsfaint/gen_tags.vim'
+ Plug 'jiangmiao/auto-pairs'
 
  Plug 'vim-scripts/indentpython.vim'
  Plug 'fatih/vim-go'
@@ -62,9 +63,6 @@ call plug#begin('~/.vim/plugged')
  Plug 'chrisbra/NrrwRgn'
  Plug 'mattn/calendar-vim'
  Plug 'vim-scripts/SyntaxRange'
-
- " GitLab hosted plugins
- Plug 'https://gitlab.com/DanielSiepmann/neotags'
 
  if filereadable(expand("~/.plugins.vim.local"))
   source ~/.plugins.vim.local
