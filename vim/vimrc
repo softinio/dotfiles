@@ -364,7 +364,7 @@ nmap <silent> <C-n> <Plug>(ale_next_wrap)
 
 " ctags
 let g:gen_tags#use_cache_dir = 1
-let g:gen_tags#ctags_auto_gen = 1
+" let g:gen_tags#ctags_auto_gen = 1
 
 " Devdocs to replace K
 nmap K <Plug>(devdocs-under-cursor)
