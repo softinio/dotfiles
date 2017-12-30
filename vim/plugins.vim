@@ -49,20 +49,9 @@ call plug#begin('~/.vim/plugged')
  Plug 'plasticboy/vim-markdown'
  Plug 'aliou/markoff.vim'
  Plug 'docker/docker' , {'rtp': '/contrib/syntax/vim/'}
- Plug 'rhysd/devdocs.vim'
 
  Plug 'SirVer/ultisnips'
  Plug 'honza/vim-snippets'
-
- " Vim Org Mode related plugins
- Plug 'jceb/vim-orgmode'
- Plug 'vim-scripts/utl.vim'
- Plug 'tpope/vim-repeat'
- Plug 'vim-scripts/taglist.vim'
- Plug 'tpope/vim-speeddating'
- Plug 'chrisbra/NrrwRgn'
- Plug 'mattn/calendar-vim'
- Plug 'vim-scripts/SyntaxRange'
 
  if filereadable(expand("~/.plugins.vim.local"))
   source ~/.plugins.vim.local
