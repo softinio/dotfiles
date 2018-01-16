@@ -317,7 +317,7 @@ nmap <Tab> :call SwitchBuffer()<CR>
 
 " Language Client plugin
 let $LANGUAGECLIENT_DEBUG=1
-let g:LanguageClient_loggingLevel='DEBUG'
+" let g:LanguageClient_loggingLevel='DEBUG'
 let g:LanguageClient_autoStart = 0
 let g:LanguageClient_serverCommands = {
     \ 'rust': ['rustup', 'run', 'stable', 'rls'],
@@ -356,11 +356,13 @@ let g:airline#extensions#ale#enabled = 1
 let g:ale_fixers = {
 \   'javascript': ['eslint'],
 \   'python': ['yapf'],
-\   'scala': ['scalafmt'],
 \}
 let g:ale_fix_on_save = 1
 nmap <silent> <C-p> <Plug>(ale_previous_wrap)
 nmap <silent> <C-n> <Plug>(ale_next_wrap)
+
+" Neoformat
+let g:neoformat_enabled_scala = ['scalafmt']
 
 " ctags
 let g:gen_tags#use_cache_dir = 1

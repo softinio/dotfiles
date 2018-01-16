@@ -10,4 +10,5 @@
 tags
 .ensime
 .ensime_cache
+nifi.env.local
 

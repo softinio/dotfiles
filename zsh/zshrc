@@ -40,6 +40,7 @@ fi
 zplug "b4b4r07/enhancd", use:init.sh
 zplug "lukechilds/zsh-nvm"
 zplug "supercrabtree/k"
+zplug "rupa/z", use:z.sh
 
 if ! zplug check --verbose; then
     printf "Install? [y/N]: "
@@ -98,6 +99,7 @@ export SCALA_HOME=/usr/local/opt/scala/idea
 export PATH=$PATH:$SCALA_HOME/bin:~/.dotfiles/bin
 export BROWSER="firefox %s"
 alias ssbt="sarsi-sbt"
+alias amm="amm --no-remote-logging"
 
 # C#
 export PATH=$PATH:/usr/local/share/dotnet
@@ -110,9 +112,7 @@ alias dc="docker-compose"
 alias dm="docker-machine"
 alias kb="kubectl"
 alias kp="kops"
-alias mk="minikube"
 alias kbc="kubectl config current-context"
-alias kbmini="kubectl config use-context minikube"
 alias kbpod="kubectl get pods"
 alias pj='python -m json.tool'
 
@@ -125,13 +125,5 @@ source <(kubectl completion zsh)
 function lb() {
     vim ~/logbook/$(date '+%Y-%m-%d').md
 }
-
-# k8
-minikube status | grep -a "Stopped" &> /dev/null
-if [ $? -ne 0 ]; then
-    eval $(minikube docker-env)
-else
-    echo "minikube not running"
-fi
 
 [[ -f ~/.zshrc.local ]] && . ~/.zshrc.local
