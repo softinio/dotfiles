@@ -1,0 +1,32 @@
+[user]
+    user = Salar Rahmanian
+	email = code@softinio.com
+	name = Salar Rahmanian
+
+[core]
+    trustctime = false
+        editor = vim
+    excludesfile = ~/.gitignore
+	autocrlf = input
+[push]
+    default = simple
+[merge]
+    tool = opendiff
+[diff]
+    tool = opendiff
+[branch]
+    autosetupmerge = always
+    autosetuprebase = always
+[mergetool]
+    keepBackup = false
+    prompt = false
+[difftool]
+    prompt = false
+
+[init]
+	templatedir = ~/.git_template
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true

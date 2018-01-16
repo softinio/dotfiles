@@ -1,27 +1,6 @@
-[user]
-    user = Salar Rahmanian
-    email = code@softinio.com
-    name = Salar Rahmanian
+[includeIf "gitdir:~/projects/"]
+    path = ~/projects/.gitconfig
 
-[core]
-    trustctime = false
-        editor = vim
-    excludesfile = ~/.gitignore
-	autocrlf = input
-[push]
-    default = simple
-[merge]
-    tool = opendiff
-[diff]
-    tool = opendiff
-[branch]
-    autosetupmerge = always
-    autosetuprebase = always
-[mergetool]
-    keepBackup = false
-    prompt = false
-[difftool]
-    prompt = false
+[includeIf "gitdir:~/source/"]
+    path = ~/source/.gitconfig
 
-[init]
-	templatedir = ~/.git_template

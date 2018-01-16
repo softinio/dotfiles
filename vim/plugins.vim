@@ -49,6 +49,7 @@ call plug#begin('~/.vim/plugged')
  Plug 'plasticboy/vim-markdown'
  Plug 'aliou/markoff.vim'
  Plug 'docker/docker' , {'rtp': '/contrib/syntax/vim/'}
+ Plug 'sbdchd/neoformat'
 
  Plug 'SirVer/ultisnips'
  Plug 'honza/vim-snippets'
