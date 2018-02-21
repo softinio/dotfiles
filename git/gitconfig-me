@@ -1,13 +1,13 @@
 [user]
     user = Salar Rahmanian
-	email = code@softinio.com
-	name = Salar Rahmanian
+    email = code@softinio.com
+    name = Salar Rahmanian
 
 [core]
     trustctime = false
-        editor = vim
+    editor = vim
     excludesfile = ~/.gitignore
-	autocrlf = input
+    autocrlf = input
 [push]
     default = simple
 [merge]
@@ -24,9 +24,9 @@
     prompt = false
 
 [init]
-	templatedir = ~/.git_template
+    templatedir = ~/.git_template
 [filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true
