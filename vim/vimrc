@@ -12,6 +12,9 @@ filetype plugin indent on
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Basic Options
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" {{{
+" Detect OS
+let g:uname = substitute(system('uname'), '\n', '', '')
+
 if ! has('nvim')
     set nocompatible
     set incsearch
@@ -22,8 +25,12 @@ if ! has('nvim')
     set hlsearch
 else
     set nohlsearch
-    let g:python_host_prog = '/Users/salar/.pyenv/versions/vim/bin/python'
-    let g:python3_host_prog = '/usr/local/bin/python3'
+    if g:uname == 'Darwin'
+        let g:python_host_prog = '/Users/salar/.pyenv/versions/vim/bin/python'
+        let g:python3_host_prog = '/usr/local/bin/python3'
+    else
+        let g:python3_host_prog = '/run/current-system/sw/bin/python'
+	endif
     :let $NVIM_TUI_ENABLE_TRUE_COLOR=1
     :let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
     :tnoremap <Esc> <C-\><C-n>
