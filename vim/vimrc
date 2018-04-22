@@ -42,9 +42,9 @@ set fileformat=unix
 set encoding=utf-8
 set fileencoding=utf-8
 set fileencodings=utf-8
-silent! colorscheme Tomorrow-Night-Bright
-" let g:seoul256_background = 233
-" silent! colorscheme seoul256
+let g:seoul256_background = 233
+silent! colorscheme seoul256
+let g:seoul256_srgb = 1
 set background=dark
 " set guifont=Source\ Code\ Pro:h12
 set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Nerd\ Font:h12

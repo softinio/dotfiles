@@ -89,7 +89,7 @@ if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
 
 # Java
-# export JAVA_HOME=$(/usr/libexec/java_home)
+test -e "/usr/libexec/java_home" && export JAVA_HOME=$(/usr/libexec/java_home)
 
 # Scala
 export SCALA_HOME=/usr/local/opt/scala/idea
@@ -107,6 +107,7 @@ alias pj='python -m json.tool'
 
 # Shell improvements
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 # Logbook
 function lb() {

@@ -48,13 +48,11 @@ endif
  Plug 'fatih/vim-go'
  Plug 'othree/html5-syntax.vim'
  Plug 'lilydjwg/colorizer'
- Plug 'OmniSharp/Omnisharp-vim'
  Plug 'ryanoasis/vim-devicons'
  Plug 'cespare/vim-toml'
  Plug 'elzr/vim-json'
  Plug 'godlygeek/tabular'
  Plug 'plasticboy/vim-markdown'
- Plug 'aliou/markoff.vim'
  Plug 'docker/docker' , {'rtp': '/contrib/syntax/vim/'}
  Plug 'sbdchd/neoformat'
 
