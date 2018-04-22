@@ -22,7 +22,8 @@ if ! has('nvim')
     set hlsearch
 else
     set nohlsearch
-    let g:python3_host_prog = '/run/current-system/sw/bin/python'
+    let g:python_host_prog = '/Users/salar/.pyenv/versions/vim/bin/python'
+    let g:python3_host_prog = '/usr/local/bin/python3'
     :let $NVIM_TUI_ENABLE_TRUE_COLOR=1
     :let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
     :tnoremap <Esc> <C-\><C-n>
