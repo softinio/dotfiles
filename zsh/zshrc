@@ -3,6 +3,17 @@
 # Custom Completion Funcs
 fpath+=~/.zfunc
 
+# Detect OS
+platform='unknown'
+unamestr=`uname`
+if [[ "$unamestr" == 'Linux' ]]; then
+   platform='linux'
+elif [[ "$unamestr" == 'FreeBSD' ]]; then
+   platform='freebsd'
+elif [[ "$unamestr" == 'Darwin' ]]; then
+   platform='macosx'
+fi
+
 # zplug
 if [[ ! -d ~/.zplug ]]; then
   git clone https://github.com/zplug/zplug ~/.zplug
@@ -85,6 +96,10 @@ export GOPATH=$HOME/goprojects
 export PATH=$PATH:$GOPATH/bin
 
 # Python
+if [[ $platform == 'macosx' ]]; then
+    export CFLAGS="-I$(brew --prefix openssl)/include"
+    export LDFLAGS="-L$(brew --prefix openssl)/lib"
+fi
 if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
 
