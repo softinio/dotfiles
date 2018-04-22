@@ -9,11 +9,18 @@ call plug#begin('~/.vim/plugged')
  Plug 'vim-airline/vim-airline'
  Plug 'vim-airline/vim-airline-themes'
  Plug 'w0rp/ale'
- Plug 'autozimu/LanguageClient-neovim', {'tag': 'binary-*-x86_64-apple-darwin' }
- Plug 'roxma/nvim-completion-manager'
- Plug 'rust-lang/rust.vim'
- Plug 'racer-rust/vim-racer'
- Plug 'roxma/nvim-cm-racer'
+ Plug 'autozimu/LanguageClient-neovim', {
+     \ 'branch': 'next',
+     \ 'do': 'bash install.sh',
+     \ }
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+ Plug 'zchee/deoplete-jedi'
  Plug 'mhartington/nvim-typescript'
  Plug 'HerringtonDarkholme/yats.vim'
  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }

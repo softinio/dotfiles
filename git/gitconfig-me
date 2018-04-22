@@ -11,17 +11,18 @@
 [push]
     default = simple
 [merge]
-    tool = opendiff
+  tool = vimdiff
+[mergetool]
+  prompt = true
+[mergetool "vimdiff"]
+  cmd = nvim -d $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
+[difftool]
+  prompt = false
 [diff]
-    tool = opendiff
+  tool = vimdiff
 [branch]
     autosetupmerge = always
     autosetuprebase = always
-[mergetool]
-    keepBackup = false
-    prompt = false
-[difftool]
-    prompt = false
 
 [init]
     templatedir = ~/.git_template
