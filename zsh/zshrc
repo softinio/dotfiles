@@ -11,7 +11,7 @@ fi
 
 source ~/.zplug/init.zsh
 
-DEFAULT_USER=salar.rahmanian
+DEFAULT_USER=salar
 ZSH_THEME=dracula
 
 zplug "zplug/zplug"
@@ -58,6 +58,7 @@ export TERM=xterm-256color
 
 # vim / Neovim
 alias vim="nvim"
+alias vimdiff='nvim -d'
 export PATH=~/notes:$PATH
 alias notes="cd ~/notes; fuz"
 alias nvimi="nvim +PlugInstall +UpdateRemotePlugins +qa"
@@ -83,16 +84,12 @@ export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.g
 export GOPATH=$HOME/goprojects
 export PATH=$PATH:$GOPATH/bin
 
-# Rust Lang
-export RUST_SRC_PATH=$(rustc --print sysroot)/lib/rustlib/src/rust/src/
-
 # Python
-export CFLAGS="-I$(xcrun --show-sdk-path)/usr/include"
 if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
 
 # Java
-export JAVA_HOME=$(/usr/libexec/java_home)
+test -e "/usr/libexec/java_home" && export JAVA_HOME=$(/usr/libexec/java_home)
 
 # Scala
 export SCALA_HOME=/usr/local/opt/scala/idea
@@ -101,25 +98,16 @@ export BROWSER="firefox %s"
 alias ssbt="sarsi-sbt"
 alias amm="amm --no-remote-logging"
 
-# C#
-export PATH=$PATH:/usr/local/share/dotnet
-
 # Haskell
 export PATH=/Users/salar.rahmanian/.local/bin:$PATH
 
 # aliases 
 alias dc="docker-compose"
-alias dm="docker-machine"
-alias kb="kubectl"
-alias kp="kops"
-alias kbc="kubectl config current-context"
-alias kbpod="kubectl get pods"
 alias pj='python -m json.tool'
 
 # Shell improvements
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-source <(kubectl completion zsh)
 
 # Logbook
 function lb() {

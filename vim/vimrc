@@ -22,8 +22,7 @@ if ! has('nvim')
     set hlsearch
 else
     set nohlsearch
-    let g:python_host_prog = '/Users/salar.rahmanian/.pyenv/versions/vim/bin/python'
-    let g:python3_host_prog = '/usr/local/bin/python3'
+    let g:python3_host_prog = '/run/current-system/sw/bin/python'
     :let $NVIM_TUI_ENABLE_TRUE_COLOR=1
     :let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
     :tnoremap <Esc> <C-\><C-n>
@@ -37,13 +36,15 @@ else
     :nnoremap <A-l> <C-w>l
 endif
 
+let g:deoplete#enable_at_startup = 1
+
 set fileformat=unix
 set encoding=utf-8
 set fileencoding=utf-8
 set fileencodings=utf-8
-" silent! colorscheme Tomorrow-Night-Bright
 let g:seoul256_background = 233
 silent! colorscheme seoul256
+let g:seoul256_srgb = 1
 set background=dark
 " set guifont=Source\ Code\ Pro:h12
 set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Nerd\ Font:h12
