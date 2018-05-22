@@ -59,6 +59,8 @@ endif
  Plug 'SirVer/ultisnips'
  Plug 'honza/vim-snippets'
 
+ Plug 'ensime/ensime-vim', { 'do': ':UpdateRemotePlugins'  }
+
  if filereadable(expand("~/.plugins.vim.local"))
   source ~/.plugins.vim.local
  endif

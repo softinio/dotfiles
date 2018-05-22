@@ -24,6 +24,7 @@ source ~/.zplug/init.zsh
 
 DEFAULT_USER=salar
 ZSH_THEME=dracula
+HISTSIZE=1000
 
 zplug "zplug/zplug"
 zplug denysdovhan/spaceship-zsh-theme, use:spaceship.zsh, from:github, as:theme
@@ -112,6 +113,7 @@ export PATH=$PATH:$SCALA_HOME/bin:~/.dotfiles/bin
 export BROWSER="firefox %s"
 alias ssbt="sarsi-sbt"
 alias amm="amm --no-remote-logging"
+alias stags="ng co.pjrt.stags.cli.Main"
 
 # Haskell
 export PATH=/Users/salar.rahmanian/.local/bin:$PATH
