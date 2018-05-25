@@ -26,10 +26,13 @@ if ! has('nvim')
 else
     set nohlsearch
     if g:uname == 'Darwin'
-        let g:python_host_prog = '/Users/salar/.pyenv/versions/vim/bin/python'
+        let g:python_host_prog = '/usr/local/bin/python2'
         let g:python3_host_prog = '/usr/local/bin/python3'
+        set guifont=SF\ Mono:h12
     else
         let g:python3_host_prog = '/run/current-system/sw/bin/python'
+        set guifont=Source\ Code\ Pro:h12
+        set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Nerd\ Font:h12
 	endif
     :let $NVIM_TUI_ENABLE_TRUE_COLOR=1
     :let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
@@ -54,8 +57,6 @@ let g:seoul256_background = 233
 silent! colorscheme seoul256
 let g:seoul256_srgb = 1
 set background=dark
-" set guifont=Source\ Code\ Pro:h12
-set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Nerd\ Font:h12
 set termguicolors
 set shortmess=atI
 set textwidth=79
@@ -311,10 +312,10 @@ let g:NERDTreeIndicatorMapCustom = {
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-autocmd FileType scala,sbt setlocal omnifunc=LanguageClient#complete
-"scalacomplete#CompleteTags
+
+"LSP settings
+nnoremap <silent> <F2> :LspDefinition<CR>
 
 " Custom Functions
 " Switch to previous buffer mapped to tab
@@ -323,20 +324,6 @@ function SwitchBuffer()
 endfunction
 
 nmap <Tab> :call SwitchBuffer()<CR>
-
-" Language Client plugin
-let $LANGUAGECLIENT_DEBUG=1
-" let g:LanguageClient_loggingLevel='DEBUG'
-let g:LanguageClient_autoStart = 0
-let g:LanguageClient_serverCommands = {
-    \ 'rust': ['rustup', 'run', 'stable', 'rls'],
-    \ 'javascript': ['/usr/local/bin/javascript-typescript-stdio'],
-    \ 'scala': ['node', expand('~/.dotfiles/bin/sbt-server-stdio.js')],
-    \ }
-
-nnoremap <silent> L :call LanguageClient_textDocument_hover()<CR>
-nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
-nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
 
 " Sarsi for quickfix
 if !empty(glob("sarsi-nvim"))
@@ -362,8 +349,9 @@ let g:UltiSnipsSnippetsDir="~/.dotfiles/snippets"
 " Also see: ~/.vim/ftplugin for other ale related config
 let g:ale_completion_enabled = 1
 let g:airline#extensions#ale#enabled = 1
-let g:ale_fixers = {
+let g:ale_linters = {
 \   'javascript': ['eslint'],
+\   'typescript': ['tslint', 'tsserver'],
 \   'python': ['yapf'],
 \}
 let g:ale_fix_on_save = 1

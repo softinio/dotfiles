@@ -9,10 +9,14 @@ call plug#begin('~/.vim/plugged')
  Plug 'vim-airline/vim-airline'
  Plug 'vim-airline/vim-airline-themes'
  Plug 'w0rp/ale'
- Plug 'autozimu/LanguageClient-neovim', {
-     \ 'branch': 'next',
-     \ 'do': 'bash install.sh',
-     \ }
+ Plug 'prabirshrestha/async.vim'
+ Plug 'prabirshrestha/vim-lsp'
+ Plug 'ryanolsonx/vim-lsp-python'
+ Plug 'ryanolsonx/vim-lsp-typescript'
+ Plug 'ryanolsonx/vim-lsp-css'
+ Plug 'pangloss/vim-javascript'
+ Plug 'leafgarland/typescript-vim'
+ Plug 'maxmellon/vim-jsx-pretty'
 if has('nvim')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 else
@@ -20,9 +24,6 @@ else
   Plug 'roxma/nvim-yarp'
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
- Plug 'zchee/deoplete-jedi'
- Plug 'mhartington/nvim-typescript'
- Plug 'HerringtonDarkholme/yats.vim'
  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
  Plug 'junegunn/fzf.vim'
  Plug 'junegunn/seoul256.vim'
@@ -31,6 +32,7 @@ endif
  Plug 'scrooloose/nerdtree'
  Plug 'Xuyuanp/nerdtree-git-plugin'
  Plug 'tpope/vim-fugitive'
+ Plug 'tpope/vim-rhubarb'
  Plug 'junegunn/gv.vim'
  Plug 'tpope/vim-surround'
  Plug 'tpope/vim-commentary'

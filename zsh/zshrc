@@ -131,4 +131,9 @@ function lb() {
     vim ~/logbook/$(date '+%Y-%m-%d').md
 }
 
+# NVM 
+export NVM_DIR=$(realpath "$HOME/.nvm")
+[[ -s $HOME/.nvm/nvm.sh ]] && . $HOME/.nvm/nvm.sh
+alias npmls="npm list -g --depth=0"
+
 [[ -f ~/.zshrc.local ]] && . ~/.zshrc.local
