@@ -128,7 +128,7 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 
 # Logbook
 function lb() {
-    vim ~/logbook/$(date '+%Y-%m-%d').md
+    nvim ~/logbook/$(date '+%Y-%m-%d').md
 }
 
 # NVM 

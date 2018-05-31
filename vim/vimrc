@@ -295,6 +295,10 @@ let g:smartpairs_maxdepth = 20
 let g:vim_markdown_folding_disabled = 1
 let g:vim_markdown_toml_frontmatter = 1
 
+" markdown preview
+" Using this chrome extension: https://chrome.google.com/webstore/detail/markdown-preview-plus/febilkbfcbhebfnokafefeacimjdckgl
+autocmd BufEnter *.md exe 'noremap <F5> :! /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome %:p<CR>'
+
 "nerdtree-git-plugin
 let g:NERDTreeIndicatorMapCustom = {
     \ "Modified"  : "✹",
@@ -350,13 +354,23 @@ let g:UltiSnipsSnippetsDir="~/.dotfiles/snippets"
 let g:ale_completion_enabled = 1
 let g:airline#extensions#ale#enabled = 1
 let g:ale_linters = {
-\   'javascript': ['eslint'],
+\   'javascript': ['standard'],
 \   'typescript': ['tslint', 'tsserver'],
-\   'python': ['yapf'],
+\   'python': ['pycodestyle'],
 \}
 let g:ale_fix_on_save = 1
+let g:ale_javascript_standard_args="--parser babel-eslint"
 nmap <silent> <C-p> <Plug>(ale_previous_wrap)
 nmap <silent> <C-n> <Plug>(ale_next_wrap)
+autocmd bufwritepost *.js silent !standard --fix --parser babel-eslint %
+au BufNewFile,BufRead *.js 
+      \ set tabstop=2 |
+      \ set softtabstop=2 |
+      \ set shiftwidth=2 |
+      \ set filetype=javascript.jsx
+let g:javascript_enable_domhtmlcss=1
+let g:jsx_ext_required=0
+let g:javascript_plugin_jsdoc=1
 
 " Neoformat
 let g:neoformat_enabled_scala = ['scalafmt']

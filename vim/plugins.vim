@@ -17,6 +17,8 @@ call plug#begin('~/.vim/plugged')
  Plug 'pangloss/vim-javascript'
  Plug 'leafgarland/typescript-vim'
  Plug 'maxmellon/vim-jsx-pretty'
+ Plug 'digitaltoad/vim-pug'
+ Plug 'ianks/vim-tsx'
 if has('nvim')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 else
