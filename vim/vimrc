@@ -356,9 +356,9 @@ let g:airline#extensions#ale#enabled = 1
 let g:ale_linters = {
 \   'javascript': ['standard'],
 \   'typescript': ['tslint', 'tsserver'],
-\   'python': ['pycodestyle'],
+\   'python': ['flake8'],
 \}
-let g:ale_fix_on_save = 1
+let g:ale_fix_on_save = 0
 let g:ale_javascript_standard_args="--parser babel-eslint"
 nmap <silent> <C-p> <Plug>(ale_previous_wrap)
 nmap <silent> <C-n> <Plug>(ale_next_wrap)

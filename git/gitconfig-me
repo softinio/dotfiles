@@ -5,7 +5,7 @@
 
 [core]
     trustctime = false
-    editor = vim
+    editor = nvim
     excludesfile = ~/.gitignore
     autocrlf = input
 [push]

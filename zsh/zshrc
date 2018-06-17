@@ -23,11 +23,11 @@ fi
 source ~/.zplug/init.zsh
 
 DEFAULT_USER=salar
-ZSH_THEME=dracula
+# ZSH_THEME=dracula
 HISTSIZE=1000
 
 zplug "zplug/zplug"
-zplug denysdovhan/spaceship-zsh-theme, use:spaceship.zsh, from:github, as:theme
+zplug denysdovhan/spaceship-prompt, use:spaceship.zsh, from:github, as:theme
 zplug "modules/git", from:prezto 
 zplug "modules/history", from:prezto 
 zplug "modules/ssh", from:prezto 
@@ -130,6 +130,8 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 function lb() {
     nvim ~/logbook/$(date '+%Y-%m-%d').md
 }
+# Aliases
+alias sshnix1='ssh salar@nix1.softinio.net'
 
 # NVM 
 export NVM_DIR=$(realpath "$HOME/.nvm")
