@@ -23,7 +23,6 @@ fi
 source ~/.zplug/init.zsh
 
 DEFAULT_USER=salar
-# ZSH_THEME=dracula
 HISTSIZE=1000
 
 zplug "zplug/zplug"
