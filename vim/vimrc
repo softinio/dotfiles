@@ -153,7 +153,7 @@ map <leader>t :Tags<cr>
 autocmd! FileType fzf tnoremap <buffer> <leader>q <c-c>
 nmap <leader>l :bnext<CR>
 nmap <leader>h :bprevious<CR>
-
+ 
 " yapf
 autocmd FileType python nnoremap <leader>y :0,$!yapf<Cr>
 " noremap <leader>y :YapfFormat<CR>
@@ -222,7 +222,7 @@ autocmd InsertLeave * if pumvisible() == 0|silent! pclose|endif
 "}}}
 
 " TagBar {{{
-nnoremap <leader>tb :TagbarToggle<cr>
+let g:tagbar_ctags_bin = '/usr/local/bin/ctags'
 "}}}
 
 "}}}
@@ -376,8 +376,8 @@ let g:javascript_plugin_jsdoc=1
 let g:neoformat_enabled_scala = ['scalafmt']
 
 " ctags
-let g:gen_tags#use_cache_dir = 1
-" let g:gen_tags#ctags_auto_gen = 1
+let g:gen_tags#use_cache_dir = 0
+let g:gen_tags#ctags_auto_gen = 1
 
 "Commands
 com! FormatJSON %!python -m json.tool
