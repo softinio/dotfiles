@@ -45,23 +45,22 @@ endif
  Plug 'gorkunov/smartpairs.vim'
  Plug 'ervandew/supertab'
  Plug 'brooth/far.vim'
- Plug 'jsfaint/gen_tags.vim'
  Plug 'jiangmiao/auto-pairs'
+ Plug 'jsfaint/gen_tags.vim'
 
  Plug 'vim-scripts/indentpython.vim'
  Plug 'fatih/vim-go'
- Plug 'othree/html5-syntax.vim'
  Plug 'lilydjwg/colorizer'
  Plug 'ryanoasis/vim-devicons'
  Plug 'cespare/vim-toml'
  Plug 'elzr/vim-json'
  Plug 'godlygeek/tabular'
  Plug 'plasticboy/vim-markdown'
- Plug 'docker/docker' , {'rtp': '/contrib/syntax/vim/'}
  Plug 'sbdchd/neoformat'
 
  Plug 'SirVer/ultisnips'
  Plug 'honza/vim-snippets'
+ Plug 'sheerun/vim-polyglot'
 
  Plug 'ensime/ensime-vim', { 'do': ':UpdateRemotePlugins'  }
 

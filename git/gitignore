@@ -12,4 +12,5 @@ tags
 .ensime_cache
 nifi.env.local
 *.iml
+.root
 

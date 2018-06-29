@@ -73,6 +73,7 @@ alias vim="nvim"
 alias vimdiff='nvim -d'
 export PATH=~/notes:$PATH
 alias notes="cd ~/notes; fuz"
+alias notesi="cd ~/notes; nvim"
 alias nvimi="nvim +PlugInstall +UpdateRemotePlugins +qa"
 alias nvimu="nvim +PlugUpgrade +PlugUpdate +UpdateRemotePlugins +qa"
 export EDITOR=nvim
@@ -139,3 +140,4 @@ export NVM_DIR=$(realpath "$HOME/.nvm")
 alias npmls="npm list -g --depth=0"
 
 [[ -f ~/.zshrc.local ]] && . ~/.zshrc.local
+export PATH="/usr/local/sbin:$PATH"
