@@ -87,7 +87,7 @@ export GTAGSLIBPATH=/usr/include/
 # --hidden: Search hidden files and folders
 # --follow: Follow symlinks
 # --glob: Additional conditions for search (in this case ignore everything in the .git/ folder)
-export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
+export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
 
 # Go Lang
 export GOPATH=$HOME/goprojects
@@ -98,6 +98,9 @@ if [[ $platform == 'macosx' ]]; then
     export CFLAGS="-I$(brew --prefix openssl)/include"
     export LDFLAGS="-L$(brew --prefix openssl)/lib"
 fi
+export PYENV_ROOT=$HOME/.pyenv
+export PATH=$PYENV_ROOT/bin:$PATH
+export PIPENV_PYTHON=$PYENV_ROOT/shims/python
 if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
 
@@ -128,7 +131,7 @@ function lb() {
     nvim ~/logbook/$(date '+%Y-%m-%d').md
 }
 # Aliases
-alias sshnix1='ssh salar@nix1.softinio.net'
+alias sshfre1='ssh salar@fre1.softinio.net'
 
 # NVM 
 export NVM_DIR=$(realpath "$HOME/.nvm")
