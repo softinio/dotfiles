@@ -6,7 +6,10 @@ fpath+=~/.zfunc
 # Detect OS
 platform='unknown'
 unamestr=`uname`
-if [[ "$unamestr" == 'Linux' ]]; then
+unamestrdtl=`uname -a`
+if [[ "$unamestrdtl" == *"amzn"* ]] then
+    platform='amazonwrk'
+elif [[ "$unamestr" == 'Linux' ]]; then
    platform='linux'
 elif [[ "$unamestr" == 'FreeBSD' ]]; then
    platform='freebsd'
@@ -98,6 +101,9 @@ if [[ $platform == 'macosx' ]]; then
     export CFLAGS="-I$(brew --prefix openssl)/include"
     export LDFLAGS="-L$(brew --prefix openssl)/lib"
 fi
+if [[ $platform == 'amazonwrk' ]]; then
+    export PATH="~/.pyenv/plugins/pyenv-virtualenv/bin:~/.pyenv/bin:~/idea-IU-181.5281.24/bin:$PATH"
+fi
 export PYENV_ROOT=$HOME/.pyenv
 export PATH=$PYENV_ROOT/bin:$PATH
 export PIPENV_PYTHON=$PYENV_ROOT/shims/python
@@ -138,5 +144,5 @@ export NVM_DIR=$(realpath "$HOME/.nvm")
 [[ -s $HOME/.nvm/nvm.sh ]] && . $HOME/.nvm/nvm.sh
 alias npmls="npm list -g --depth=0"
 
-[[ -f ~/.zshrc.local ]] && . ~/.zshrc.local
+[[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
 export PATH="/usr/local/sbin:$PATH"
