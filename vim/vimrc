@@ -410,3 +410,8 @@ endfunction
 
 nnoremap <silent> <C-]> :<C-u>call QualifiedTagJump()<CR>
 
+if filereadable(expand("~/.vimrc.local"))
+ source ~/.vimrc.local
+endif
+
+
