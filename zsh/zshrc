@@ -127,6 +127,7 @@ export PATH=/Users/srahmanian/.local/bin:$PATH
 # aliases 
 alias dc="docker-compose"
 alias pj='python -m json.tool'
+alias cat="bat"
 
 # Shell improvements
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

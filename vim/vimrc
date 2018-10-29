@@ -82,6 +82,7 @@ set hidden
 set history=5000
 set laststatus=2
 set pastetoggle=<F3>
+set foldmethod=indent
 
 set showmatch
 set tags=./.tags,.tags,./tags,tags
@@ -123,6 +124,7 @@ set wildignore+=*/target/* "sbt target directory"
 
 let NERDTreeIgnore=['\.pyc$', '\~$', 'target'] "ignore files in NERDTree
 let NERDTreeRespectWildIgnore=1
+let NERDTreeQuitOnOpen=1
 " }}}
 
 
@@ -342,12 +344,27 @@ let g:netrw_browse_split = 2
 let g:netrw_winsize = 25
 let g:netrw_altv = 1
 
-" Ultisnips
-let g:UltiSnipsExpandTrigger="<C-u>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-let g:UltiSnipsEditSplit="vertical"
-let g:UltiSnipsSnippetsDir="~/.dotfiles/snippets"
+" neosnippet
+" Plugin key-mappings.
+" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+
+" SuperTab like snippets behavior.
+" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
+"imap <expr><TAB>
+" \ pumvisible() ? "\<C-n>" :
+" \ neosnippet#expandable_or_jumpable() ?
+" \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+
+" For conceal markers.
+if has('conceal')
+  set conceallevel=2 concealcursor=niv
+endif
+let g:neosnippet#snippets_directory="~/.dotfiles/snippets"
 
 " Ale
 " Also see: ~/.vim/ftplugin for other ale related config
@@ -414,4 +431,14 @@ if filereadable(expand("~/.vimrc.local"))
  source ~/.vimrc.local
 endif
 
+" vim-test
+nmap <silent> t<C-n> :TestNearest<CR> " t Ctrl+b
+let test#strategy = "neovim"
+" nmap <silent> t<C-f> :TestFile<CR>    " t Ctrl+f
+" nmap <silent> t<C-s> :TestSuite<CR>   " t Ctrl+s
+" nmap <silent> t<C-l> :TestLast<CR>    " t Ctrl+l
+" nmap <silent> t<C-g> :TestVisit<CR>   " t Ctrl+g
 
+" split-term
+let g:split_term_default_shell = "zsh"
+let g:split_term_vertical = 1
