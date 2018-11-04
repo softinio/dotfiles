@@ -30,10 +30,11 @@ else
         let g:python3_host_prog = '/usr/local/bin/python3'
         set guifont=SF\ Mono:h12
     else
-        let g:python3_host_prog = '/run/current-system/sw/bin/python'
+        let g:python_host_prog = '/usr/bin/python2'
+        let g:python3_host_prog = '/usr/bin/python3'
         set guifont=Source\ Code\ Pro:h12
         set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Nerd\ Font:h12
-	endif
+    endif
     :let $NVIM_TUI_ENABLE_TRUE_COLOR=1
     :let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
     :tnoremap <Esc> <C-\><C-n>
@@ -409,4 +410,4 @@ function! QualifiedTagJump() abort
 endfunction
 
 nnoremap <silent> <C-]> :<C-u>call QualifiedTagJump()<CR>
-
+let g:go_version_warning = 0
