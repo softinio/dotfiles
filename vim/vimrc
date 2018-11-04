@@ -427,9 +427,7 @@ function! QualifiedTagJump() abort
 endfunction
 
 nnoremap <silent> <C-]> :<C-u>call QualifiedTagJump()<CR>
-<<<<<<< HEAD
 let g:go_version_warning = 0
-=======
 
 if filereadable(expand("~/.vimrc.local"))
  source ~/.vimrc.local
@@ -446,4 +444,3 @@ let test#strategy = "neovim"
 " split-term
 let g:split_term_default_shell = "zsh"
 let g:split_term_vertical = 1
->>>>>>> 06fbe8ff20c0042d6524d72d2613a4cd530df100
