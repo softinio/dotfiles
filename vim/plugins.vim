@@ -58,11 +58,14 @@ endif
  Plug 'plasticboy/vim-markdown'
  Plug 'sbdchd/neoformat'
 
- Plug 'SirVer/ultisnips'
- Plug 'honza/vim-snippets'
+ Plug 'Shougo/neosnippet.vim'
+ Plug 'Shougo/neosnippet-snippets'
  Plug 'sheerun/vim-polyglot'
 
  Plug 'ensime/ensime-vim', { 'do': ':UpdateRemotePlugins'  }
+
+ Plug 'vimlab/split-term.vim'
+ Plug 'janko-m/vim-test'
 
  if filereadable(expand("~/.plugins.vim.local"))
   source ~/.plugins.vim.local

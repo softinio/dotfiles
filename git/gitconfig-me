@@ -20,6 +20,8 @@
     prompt = false
 [diff]
   tool = vimdiff
+  noprefix = true
+  conflictstyle = diff3 
 [branch]
     autosetupmerge = always
     autosetuprebase = always
