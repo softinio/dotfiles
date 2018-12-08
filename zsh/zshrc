@@ -111,15 +111,17 @@ if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
 
 # Java
+eval "$(jenv init -)"
 test -e "/usr/libexec/java_home" && export JAVA_HOME=$(/usr/libexec/java_home)
 
 # Scala
 export SCALA_HOME=/usr/local/opt/scala/idea
 export PATH=$PATH:$SCALA_HOME/bin:~/.dotfiles/bin
-export BROWSER="firefox %s"
-alias ssbt="sarsi-sbt"
 alias amm="amm --no-remote-logging"
 alias stags="ng co.pjrt.stags.cli.Main"
+
+# Rust
+export PATH=$PATH:$HOME/.cargo/bin
 
 # Haskell
 export PATH=/Users/srahmanian/.local/bin:$PATH

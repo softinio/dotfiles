@@ -9,11 +9,7 @@ call plug#begin('~/.vim/plugged')
  Plug 'vim-airline/vim-airline'
  Plug 'vim-airline/vim-airline-themes'
  Plug 'w0rp/ale'
- Plug 'prabirshrestha/async.vim'
- Plug 'prabirshrestha/vim-lsp'
- Plug 'ryanolsonx/vim-lsp-python'
- Plug 'ryanolsonx/vim-lsp-typescript'
- Plug 'ryanolsonx/vim-lsp-css'
+ Plug 'natebosch/vim-lsc'
  Plug 'pangloss/vim-javascript'
  Plug 'leafgarland/typescript-vim'
  Plug 'maxmellon/vim-jsx-pretty'
@@ -26,10 +22,12 @@ else
   Plug 'roxma/nvim-yarp'
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
+ Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
  Plug 'junegunn/fzf.vim'
  Plug 'junegunn/seoul256.vim'
  Plug 'junegunn/vim-slash'
+ Plug 'Shougo/echodoc.vim'
  Plug 'majutsushi/tagbar'
  Plug 'scrooloose/nerdtree'
  Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -62,10 +60,20 @@ endif
  Plug 'Shougo/neosnippet-snippets'
  Plug 'sheerun/vim-polyglot'
 
- Plug 'ensime/ensime-vim', { 'do': ':UpdateRemotePlugins'  }
-
  Plug 'vimlab/split-term.vim'
  Plug 'janko-m/vim-test'
+
+ function! BuildComposer(info)
+  if a:info.status != 'unchanged' || a:info.force
+    if has('nvim')
+      !cargo build --release
+    else
+      !cargo build --release --no-default-features --features json-rpc
+    endif
+  endif
+endfunction
+
+Plug 'euclio/vim-markdown-composer', { 'do': function('BuildComposer') }
 
  if filereadable(expand("~/.plugins.vim.local"))
   source ~/.plugins.vim.local
