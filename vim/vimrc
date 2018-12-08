@@ -64,6 +64,7 @@ set textwidth=79
 set colorcolumn=80
 set cursorcolumn
 set cursorline
+set cmdheight=2
 set tabstop=4
 set smarttab
 set softtabstop=0
@@ -362,9 +363,9 @@ smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 \ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 
 " For conceal markers.
-if has('conceal')
-  set conceallevel=2 concealcursor=niv
-endif
+" if has('conceal')
+"   set conceallevel=2 concealcursor=niv
+" endif
 let g:neosnippet#snippets_directory="~/.dotfiles/snippets"
 
 " Ale
@@ -444,3 +445,25 @@ let test#strategy = "neovim"
 " split-term
 let g:split_term_default_shell = "zsh"
 let g:split_term_vertical = 1
+
+" vim-lsc 
+let g:lsc_server_commands = {
+    \ 'scala': 'metals-vim',
+    \ 'python': 'pyls',
+    \ 'typescript': 'typescript-language-server --stdio'
+    \}
+let g:lsc_auto_map = {
+    \ 'GoToDefinition': '<C-]>',
+    \ 'FindReferences': 'gr',
+    \ 'NextReference': '<C-n>',
+    \ 'PreviousReference': '<C-p>',
+    \ 'FindImplementations': 'gI',
+    \ 'FindCodeActions': 'ga',
+    \ 'DocumentSymbol': 'go',
+    \ 'WorkspaceSymbol': 'gS',
+    \ 'ShowHover': 'v:true',
+    \ 'SignatureHelp': '<C-m>',
+    \ 'Completion': 'completefunc',
+    \}
+autocmd CompleteDone * silent! pclose
+
