@@ -1,5 +1,7 @@
 .idea/
 .vscode/
+.metals/
+.bloop/
 .tern-project
 .python-version
 .env

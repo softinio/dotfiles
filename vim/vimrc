@@ -218,11 +218,8 @@ autocmd filetype scala setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab
 autocmd BufRead *.rs :setlocal tags=./rusty-tags.vi;/,$RUST_SRC_PATH/rusty-tags.vi
 autocmd BufWrite *.rs :silent! exec "!rusty-tags vi --quiet --start-dir=" . expand('%:p:h') . "&" <bar> redraw!
 
-"C#
-let g:OmniSharp_server_type = 'roslyn'
-
-autocmd CursorMovedI *  if pumvisible() == 0|silent! pclose|endif
-autocmd InsertLeave * if pumvisible() == 0|silent! pclose|endif
+" autocmd CursorMovedI *  if pumvisible() == 0|silent! pclose|endif
+" autocmd InsertLeave * if pumvisible() == 0|silent! pclose|endif
 "}}}
 
 " TagBar {{{
@@ -298,10 +295,7 @@ let g:smartpairs_maxdepth = 20
 " vim-markdown
 let g:vim_markdown_folding_disabled = 1
 let g:vim_markdown_toml_frontmatter = 1
-
-" markdown preview
-" Using this chrome extension: https://chrome.google.com/webstore/detail/markdown-preview-plus/febilkbfcbhebfnokafefeacimjdckgl
-autocmd BufEnter *.md exe 'noremap <F5> :! /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome %:p<CR>'
+let g:markdown_composer_open_browser = 0
 
 "nerdtree-git-plugin
 let g:NERDTreeIndicatorMapCustom = {
@@ -322,9 +316,6 @@ autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
-"LSP settings
-nnoremap <silent> <F2> :LspDefinition<CR>
-
 " Custom Functions
 " Switch to previous buffer mapped to tab
 function SwitchBuffer()
@@ -332,11 +323,6 @@ function SwitchBuffer()
 endfunction
 
 nmap <Tab> :call SwitchBuffer()<CR>
-
-" Sarsi for quickfix
-if !empty(glob("sarsi-nvim"))
-    call rpcstart('sarsi-nvim')
-endif
 
 " netrw settings
 let g:netrw_list_hide= '.*\.pyc$'
@@ -401,8 +387,7 @@ let g:gen_tags#ctags_auto_gen = 1
 "Commands
 com! FormatJSON %!python -m json.tool
 
-"Scala / Ensime
-nnoremap <localleader>t :EnType<CR>
+"Scala
 function! QualifiedTagJump() abort
   let l:plain_tag = expand("<cword>")
   let l:orig_keyword = &iskeyword
@@ -447,6 +432,7 @@ let g:split_term_default_shell = "zsh"
 let g:split_term_vertical = 1
 
 " vim-lsc 
+let g:lsc_enable_autocomplete = v:false
 let g:lsc_server_commands = {
     \ 'scala': 'metals-vim',
     \ 'python': 'pyls',

@@ -80,6 +80,7 @@ alias notesi="cd ~/notes; nvim"
 alias nvimi="nvim +PlugInstall +UpdateRemotePlugins +qa"
 alias nvimu="nvim +PlugUpgrade +PlugUpdate +UpdateRemotePlugins +qa"
 export EDITOR=nvim
+alias tabninecfg="nvim /Users/srahmanian/Library/Preferences/TabNine/TabNine.toml"
 
 # GTAGS
 export GTAGSLIBPATH=/usr/include/
