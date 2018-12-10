@@ -218,8 +218,6 @@ autocmd filetype scala setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab
 autocmd BufRead *.rs :setlocal tags=./rusty-tags.vi;/,$RUST_SRC_PATH/rusty-tags.vi
 autocmd BufWrite *.rs :silent! exec "!rusty-tags vi --quiet --start-dir=" . expand('%:p:h') . "&" <bar> redraw!
 
-" autocmd CursorMovedI *  if pumvisible() == 0|silent! pclose|endif
-" autocmd InsertLeave * if pumvisible() == 0|silent! pclose|endif
 "}}}
 
 " TagBar {{{
