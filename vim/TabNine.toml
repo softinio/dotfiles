@@ -1,0 +1,20 @@
+[language.rust]
+command = "/Users/srahmanian/.cargo/bin/rls"
+install = [
+  ["rustup", "update"],
+  ["rustup", "component", "add", "rls-preview", "rust-analysis", "rust-src"],
+]
+
+[language.python]
+command = "/usr/local/bin/pyls"
+install = [["pip", "install", "python-language-server"]]
+
+[language.scala]
+command = "/usr/local/bin/coursier"
+args = ["bootstrap", "--java-opt -XX:+UseG1GC", "--java-opt -XX:+UseStringDeduplication", "--java-opt -Xss4m", "--java-opt -Xms1G", "--java-opt -Xmx4G", "org.scalameta:metals_2.12:0.3.1+27-994e5e67-SNAPSHOT -o metals -f"]
+
+[language.typescript]
+command = "/Users/srahmanian/.nvm/versions/node/v9.10.1/bin/typescript-language-server"
+args = ["--stdio"]
+install = [["npm", "install", "-g", "typescript-language-server"]]
+

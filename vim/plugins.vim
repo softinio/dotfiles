@@ -63,6 +63,7 @@ endif
  Plug 'vimlab/split-term.vim'
  Plug 'janko-m/vim-test'
 
+" euclio/vim-markdown-composer
  function! BuildComposer(info)
   if a:info.status != 'unchanged' || a:info.force
     if has('nvim')
@@ -74,6 +75,7 @@ endif
 endfunction
 
 Plug 'euclio/vim-markdown-composer', { 'do': function('BuildComposer') }
+" euclio/vim-markdown-composer - end
 
  if filereadable(expand("~/.plugins.vim.local"))
   source ~/.plugins.vim.local
