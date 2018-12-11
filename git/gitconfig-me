@@ -13,6 +13,7 @@
 [merge]
     tool = vimdiff
 [mergetool]
+    keepBackup false
     prompt = true
 [mergetool "vimdiff"]
     cmd = nvim -d $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
@@ -34,4 +35,4 @@
     process = git-lfs filter-process
     required = true
 [protocol]
-	version = 2
+    version = 2
