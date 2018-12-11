@@ -112,8 +112,13 @@ if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
 
 # Java
-eval "$(jenv init -)"
-test -e "/usr/libexec/java_home" && export JAVA_HOME=$(/usr/libexec/java_home)
+if [[ $platform == 'macosx' ]]; then
+    eval "$(jenv init -)"
+    test -e "/usr/libexec/java_home" && export JAVA_HOME=$(/usr/libexec/java_home)
+else
+    export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-amd64
+fi
+export PATH=$PATH:$JAVA_HOME/bin
 
 # Scala
 export SCALA_HOME=/usr/local/opt/scala/idea
