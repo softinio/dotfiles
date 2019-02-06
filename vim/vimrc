@@ -26,9 +26,21 @@ if ! has('nvim')
 else
     set nohlsearch
     if g:uname == 'Darwin'
-        let g:python_host_prog = '/usr/local/bin/python2'
+        let g:python_host_prog = '/usr/local/bin/python'
         let g:python3_host_prog = '/usr/local/bin/python3'
         set guifont=SF\ Mono:h12
+        let g:clipboard = {
+              \ 'name': 'pbcopy',
+              \ 'copy': {
+              \    '+': 'pbcopy',
+              \    '*': 'pbcopy',
+              \  },
+              \ 'paste': {
+              \    '+': 'pbpaste',
+              \    '*': 'pbpaste',
+              \ },
+              \ 'cache_enabled': 0,
+              \ }
     else
         let g:python_host_prog = '/usr/bin/python2'
         let g:python3_host_prog = '/usr/bin/python3'
@@ -85,6 +97,8 @@ set history=5000
 set laststatus=2
 set pastetoggle=<F3>
 set foldmethod=indent
+
+set diffopt+=internal,algorithm:patience
 
 set showmatch
 set tags=./.tags,.tags,./tags,tags
@@ -339,10 +353,10 @@ xmap <C-k>     <Plug>(neosnippet_expand_target)
 
 " SuperTab like snippets behavior.
 " Note: It must be "imap" and "smap".  It uses <Plug> mappings.
-"imap <expr><TAB>
-" \ pumvisible() ? "\<C-n>" :
-" \ neosnippet#expandable_or_jumpable() ?
-" \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+imap <expr><TAB>
+\ pumvisible() ? "\<C-n>" :
+\ neosnippet#expandable_or_jumpable() ?
+\    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 \ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 
@@ -351,6 +365,8 @@ smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 "   set conceallevel=2 concealcursor=niv
 " endif
 let g:neosnippet#snippets_directory="~/.dotfiles/snippets"
+let g:neosnippet#enable_snipmate_compatibility = 1
+let g:ultisnips_python_style="google"
 
 " Ale
 " Also see: ~/.vim/ftplugin for other ale related config
@@ -433,7 +449,11 @@ let g:split_term_vertical = 1
 let g:lsc_enable_autocomplete = v:false
 let g:lsc_server_commands = {
     \ 'scala': 'metals-vim',
-    \ 'python': 'pyls',
+    \ 'python': {
+        \ 'name': 'python',
+        \ 'command': 'pyls',
+        \ 'suppress_stderr': v:true,
+        \ },
     \ 'typescript': 'typescript-language-server --stdio'
     \}
 let g:lsc_auto_map = {
@@ -449,5 +469,6 @@ let g:lsc_auto_map = {
     \ 'SignatureHelp': '<C-m>',
     \ 'Completion': 'completefunc',
     \}
+" let g:lsc_trace_level = 'verbose'
 autocmd CompleteDone * silent! pclose
 

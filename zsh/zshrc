@@ -24,8 +24,7 @@ if [[ ! -d ~/.zplug ]]; then
 fi
 
 source ~/.zplug/init.zsh
-
-DEFAULT_USER=salar
+# DEFAULT_USER=salar
 HISTSIZE=1000
 
 zplug "zplug/zplug"
@@ -44,7 +43,7 @@ if zplug check zsh-users/zsh-autosuggestions; then
   ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=(history-substring-search-up history-substring-search-down) # Add history-substring-search-* widgets to list of widgets that clear the autosuggestion
   ZSH_AUTOSUGGEST_CLEAR_WIDGETS=("${(@)ZSH_AUTOSUGGEST_CLEAR_WIDGETS:#(up|down)-line-or-history}") # Remove *-line-or-history widgets from list of widgets that clear the autosuggestion to avoid conflict with history-substring-search-* widgets
 fi
-zplug "zsh-users/zsh-syntax-highlighting"
+zplug "zdharma/fast-syntax-highlighting", from:github, defer:2
 zplug "zsh-users/zsh-history-substring-search"
 if zplug check zsh-users/zsh-history-substring-search; then
   zmodload zsh/terminfo
@@ -70,6 +69,7 @@ export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export TERM=xterm-256color
 export PATH=/usr/local/bin:$PATH
+export ENHANCD_FILTER=fzy:fzf
 
 # vim / Neovim
 alias vim="nvim"
@@ -155,3 +155,9 @@ alias npmls="npm list -g --depth=0"
 
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
 export PATH="/usr/local/sbin:$PATH"
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+# Nix
+if [ -e /Users/srahmanian/.nix-profile/etc/profile.d/nix.sh ]; then . /Users/srahmanian/.nix-profile/etc/profile.d/nix.sh; fi
+

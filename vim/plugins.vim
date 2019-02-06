@@ -10,11 +10,6 @@ call plug#begin('~/.vim/plugged')
  Plug 'vim-airline/vim-airline-themes'
  Plug 'w0rp/ale'
  Plug 'natebosch/vim-lsc'
- Plug 'pangloss/vim-javascript'
- Plug 'leafgarland/typescript-vim'
- Plug 'maxmellon/vim-jsx-pretty'
- Plug 'digitaltoad/vim-pug'
- Plug 'ianks/vim-tsx'
 if has('nvim')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 else
@@ -54,14 +49,13 @@ endif
  Plug 'elzr/vim-json'
  Plug 'godlygeek/tabular'
  Plug 'plasticboy/vim-markdown'
- Plug 'sbdchd/neoformat'
 
  Plug 'Shougo/neosnippet.vim'
  Plug 'Shougo/neosnippet-snippets'
+ Plug 'honza/vim-snippets'
  Plug 'sheerun/vim-polyglot'
 
  Plug 'vimlab/split-term.vim'
- Plug 'janko-m/vim-test'
 
 " euclio/vim-markdown-composer
  function! BuildComposer(info)
