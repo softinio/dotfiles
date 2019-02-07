@@ -445,9 +445,9 @@ let g:lsc_server_commands = {
     \   'log_level': 'Log'
     \ },
     \ 'python': {
-    \ 'name': 'python',
-    \ 'command': 'pyls',
-    \ 'suppress_stderr': v:true,
+    \   'name': 'python',
+    \   'command': 'pyls',
+    \   'suppress_stderr': v:true,
     \ },
     \ 'typescript': 'typescript-language-server --stdio'
     \}
