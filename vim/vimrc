@@ -444,11 +444,11 @@ let g:lsc_server_commands = {
     \   'command': 'metals-vim',
     \   'log_level': 'Log'
     \ },
-    \ 'python': 'pyls',
-    \ 'typescript': 'typescript-language-server --stdio'
-    \}
-let g:lsc_auto_map = {
-    \ 'GoToDefinition': '<C-]>',
+    \ 'python': {
+    \ 'name': 'python',
+    \ 'command': 'pyls',
+    \ 'suppress_stderr': v:true,
+    \ },
     \ 'typescript': 'typescript-language-server --stdio'
     \}
 let g:lsc_auto_map = {
