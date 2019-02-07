@@ -56,6 +56,7 @@ endif
  Plug 'sheerun/vim-polyglot'
 
  Plug 'vimlab/split-term.vim'
+ Plug 'ndmitchell/ghcid', { 'rtp': 'plugins/nvim' }
 
 " euclio/vim-markdown-composer
  function! BuildComposer(info)
