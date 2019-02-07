@@ -98,8 +98,6 @@ set laststatus=2
 set pastetoggle=<F3>
 set foldmethod=indent
 
-set diffopt+=internal,algorithm:patience
-
 set showmatch
 set tags=./.tags,.tags,./tags,tags
 
