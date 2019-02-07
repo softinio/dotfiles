@@ -391,9 +391,6 @@ let g:javascript_enable_domhtmlcss=1
 let g:jsx_ext_required=0
 let g:javascript_plugin_jsdoc=1
 
-" Neoformat
-let g:neoformat_enabled_scala = ['scalafmt']
-
 " ctags
 let g:gen_tags#use_cache_dir = 0
 let g:gen_tags#ctags_auto_gen = 1
@@ -433,13 +430,8 @@ if filereadable(expand("~/.vimrc.local"))
  source ~/.vimrc.local
 endif
 
-" vim-test
-nmap <silent> t<C-n> :TestNearest<CR> " t Ctrl+b
-let test#strategy = "neovim"
-" nmap <silent> t<C-f> :TestFile<CR>    " t Ctrl+f
-" nmap <silent> t<C-s> :TestSuite<CR>   " t Ctrl+s
-" nmap <silent> t<C-l> :TestLast<CR>    " t Ctrl+l
-" nmap <silent> t<C-g> :TestVisit<CR>   " t Ctrl+g
+"haskell
+let g:ghcid_command = "stack exec ghcid --"
 
 " split-term
 let g:split_term_default_shell = "zsh"
@@ -448,12 +440,15 @@ let g:split_term_vertical = 1
 " vim-lsc 
 let g:lsc_enable_autocomplete = v:false
 let g:lsc_server_commands = {
-    \ 'scala': 'metals-vim',
+    \ 'scala': {
+    \   'command': 'metals-vim',
+    \   'log_level': 'Log'
+    \ },
     \ 'python': {
-        \ 'name': 'python',
-        \ 'command': 'pyls',
-        \ 'suppress_stderr': v:true,
-        \ },
+    \   'name': 'python',
+    \   'command': 'pyls',
+    \   'suppress_stderr': v:true,
+    \ },
     \ 'typescript': 'typescript-language-server --stdio'
     \}
 let g:lsc_auto_map = {

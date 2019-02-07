@@ -125,6 +125,9 @@ export SCALA_HOME=/usr/local/opt/scala/idea
 export PATH=$PATH:$SCALA_HOME/bin:~/.dotfiles/bin
 alias amm="amm --no-remote-logging"
 alias stags="ng co.pjrt.stags.cli.Main"
+autoload -U compinit
+fpath=($HOME/.bloop/zsh $fpath)
+compinit
 
 # Rust
 export PATH=$PATH:$HOME/.cargo/bin
