@@ -7,9 +7,7 @@ fpath+=~/.zfunc
 platform='unknown'
 unamestr=`uname`
 unamestrdtl=`uname -a`
-if [[ "$unamestrdtl" == *"amzn"* ]] then
-    platform='amazonwrk'
-elif [[ "$unamestr" == 'Linux' ]]; then
+if [[ "$unamestr" == 'Linux' ]]; then
    platform='linux'
 elif [[ "$unamestr" == 'FreeBSD' ]]; then
    platform='freebsd'
@@ -17,59 +15,38 @@ elif [[ "$unamestr" == 'Darwin' ]]; then
    platform='macosx'
 fi
 
-# zplug
-if [[ ! -d ~/.zplug ]]; then
-  git clone https://github.com/zplug/zplug ~/.zplug
-  source ~/.zplug/init.zsh && zplug update --self
-fi
-
-source ~/.zplug/init.zsh
-# DEFAULT_USER=salar
-HISTSIZE=1000
-
-zplug "zplug/zplug"
-zplug denysdovhan/spaceship-prompt, use:spaceship.zsh, from:github, as:theme
-zplug "modules/git", from:prezto 
-zplug "modules/history", from:prezto 
-zplug "modules/ssh", from:prezto 
-zplug "modules/terminal", from:prezto 
-zplug "modules/homebrew", from:prezto 
-zplug "modules/python", from:prezto 
-zplug "modules/node", from:prezto 
-zplug "lukechilds/zsh-better-npm-completion", defer:2
-zplug "zsh-users/zsh-completions"
-zplug "zsh-users/zsh-autosuggestions"
-if zplug check zsh-users/zsh-autosuggestions; then
-  ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=(history-substring-search-up history-substring-search-down) # Add history-substring-search-* widgets to list of widgets that clear the autosuggestion
-  ZSH_AUTOSUGGEST_CLEAR_WIDGETS=("${(@)ZSH_AUTOSUGGEST_CLEAR_WIDGETS:#(up|down)-line-or-history}") # Remove *-line-or-history widgets from list of widgets that clear the autosuggestion to avoid conflict with history-substring-search-* widgets
-fi
-zplug "zdharma/fast-syntax-highlighting", from:github, defer:2
-zplug "zsh-users/zsh-history-substring-search"
-if zplug check zsh-users/zsh-history-substring-search; then
-  zmodload zsh/terminfo
-  bindkey "$terminfo[cuu1]" history-substring-search-up
-  bindkey "$terminfo[cud1]" history-substring-search-down
-fi
-zplug "b4b4r07/enhancd", use:init.sh
-zplug "lukechilds/zsh-nvm"
-zplug "supercrabtree/k"
-zplug "rupa/z", use:z.sh
-
-if ! zplug check --verbose; then
-    printf "Install? [y/N]: "
-    if read -q; then
-        echo; zplug install
-    fi
-fi
-
-zplug load 
+# zsh
+updatezsh() {
+ antibody bundle <~/.dotfiles/zsh/zsh_plugins.txt >~/.zsh_plugins.sh
+ antibody update
+}
+source ~/.zsh_plugins.sh
+source ~/Library/Caches/antibody/https-COLON--SLASH--SLASH-github.com-SLASH-denysdovhan-SLASH-spaceship-prompt/spaceship.zsh
+ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=(history-substring-search-up history-substring-search-down) # Add history-substring-search-* widgets to list of widgets that clear the autosuggestion
+ZSH_AUTOSUGGEST_CLEAR_WIDGETS=("${(@)ZSH_AUTOSUGGEST_CLEAR_WIDGETS:#(up|down)-line-or-history}") # Remove *-line-or-history widgets from list of widgets that clear the autosuggestion to avoid conflict with history-substring-search-* widgets
+zmodload zsh/terminfo
+bindkey "$terminfo[cuu1]" history-substring-search-up
+bindkey "$terminfo[cud1]" history-substring-search-down
+export ENHANCD_FILTER=fzf
 
 # General
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export TERM=xterm-256color
 export PATH=/usr/local/bin:$PATH
-export ENHANCD_FILTER=fzy:fzf
+
+# aliases 
+alias dc="docker-compose"
+alias pj='python -m json.tool'
+alias cat="bat"
+alias g="git"
+alias gl="git log"
+alias gws="git status"
+alias nixre="darwin-rebuild switch"
+alias nixgc="nix-collect-garbage -d"
+alias nixq="nix-env -qa"
+alias nixupgrade="sudo -i sh -c 'nix-channel --update && nix-env -iA nixpkgs.nix && launchctl remove org.nixos.nix-daemon && launchctl load /Library/LaunchDaemons/org.nixos.nix-daemon.plist'"
+alias nixup="nix-env -u"
 
 # vim / Neovim
 alias vim="nvim"
@@ -102,12 +79,8 @@ if [[ $platform == 'macosx' ]]; then
     export CFLAGS="-I$(brew --prefix openssl)/include"
     export LDFLAGS="-L$(brew --prefix openssl)/lib"
 fi
-if [[ $platform == 'amazonwrk' ]]; then
-    export PATH="~/.pyenv/plugins/pyenv-virtualenv/bin:~/.pyenv/bin:~/idea-IU-181.5281.24/bin:$PATH"
-fi
 export PYENV_ROOT=$HOME/.pyenv
 export PATH=$PYENV_ROOT/bin:$PATH
-export PIPENV_PYTHON=$PYENV_ROOT/shims/python
 if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
 
@@ -135,11 +108,6 @@ export PATH=$PATH:$HOME/.cargo/bin
 # Haskell
 export PATH=/Users/srahmanian/.local/bin:$PATH
 
-# aliases 
-alias dc="docker-compose"
-alias pj='python -m json.tool'
-alias cat="bat"
-
 # Shell improvements
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
@@ -160,7 +128,4 @@ alias npmls="npm list -g --depth=0"
 export PATH="/usr/local/sbin:$PATH"
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
-
-# Nix
-if [ -e /Users/srahmanian/.nix-profile/etc/profile.d/nix.sh ]; then . /Users/srahmanian/.nix-profile/etc/profile.d/nix.sh; fi
 

@@ -1,0 +1,13 @@
+mafredri/zsh-async
+rupa/z
+supercrabtree/k
+b4b4r07/enhancd
+denysdovhan/spaceship-prompt
+Tarrasch/zsh-bd
+zsh-users/zsh-completions
+zsh-users/zsh-autosuggestions branch:develop
+sindresorhus/pure
+zsh-users/zsh-history-substring-search
+zsh-users/zsh-syntax-highlighting
+spwhitt/nix-zsh-completions
+
