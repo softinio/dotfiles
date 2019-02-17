@@ -36,7 +36,6 @@
       pkgs.coursier
       pkgs.ammonite
       pkgs.bloop
-      pkgs.neovim
     ];
 
   # Use a custom configuration.nix location.
