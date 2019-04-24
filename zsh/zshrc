@@ -38,15 +38,16 @@ export PATH=/usr/local/bin:$PATH
 # aliases 
 alias dc="docker-compose"
 alias pj='python -m json.tool'
-alias cat="bat"
+alias cat="bat -p"
 alias g="git"
 alias gl="git log"
 alias gws="git status"
 alias nixre="darwin-rebuild switch"
 alias nixgc="nix-collect-garbage -d"
-alias nixq="nix-env -qa"
+alias nixq="nix-env -qaP"
 alias nixupgrade="sudo -i sh -c 'nix-channel --update && nix-env -iA nixpkgs.nix && launchctl remove org.nixos.nix-daemon && launchctl load /Library/LaunchDaemons/org.nixos.nix-daemon.plist'"
 alias nixup="nix-env -u"
+alias nixcfg="nvim ~/.nixpkgs/darwin-configuration.nix"
 
 # vim / Neovim
 alias vim="nvim"

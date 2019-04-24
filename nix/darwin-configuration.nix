@@ -7,11 +7,11 @@
     [ pkgs.lua
       # ( pkgs.lua.withPackages (ps: with ps; [ luarocks mpack ]) )
       ( pkgs.python36.withPackages (ps: with ps; [ pip flake8 yapf black pynvim python-language-server ]) )
-      # pkgs.neovim
+      pkgs.neovim
       pkgs.zsh
       pkgs.git
       pkgs.awscli
-      pkgs.pgcli
+      # pkgs.pgcli
       pkgs.tig
       pkgs.fzf
       pkgs.bat
@@ -36,6 +36,7 @@
       pkgs.coursier
       pkgs.ammonite
       pkgs.bloop
+      pkgs.tmux
     ];
 
   # Use a custom configuration.nix location.
