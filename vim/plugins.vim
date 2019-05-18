@@ -9,7 +9,7 @@ call plug#begin('~/.vim/plugged')
  Plug 'vim-airline/vim-airline'
  Plug 'vim-airline/vim-airline-themes'
  Plug 'w0rp/ale'
- Plug 'natebosch/vim-lsc'
+ Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 if has('nvim')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 else

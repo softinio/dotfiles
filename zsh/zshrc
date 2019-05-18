@@ -101,7 +101,12 @@ compinit
 export PATH=$PATH:$HOME/.cargo/bin
 
 # Haskell
-export PATH=/Users/srahmanian/.local/bin:$PATH
+export PATH=$HOME/.bloop:$HOME/.local/bin:$PATH
+
+# aliases 
+alias dc="docker-compose"
+alias pj='python -m json.tool'
+alias cat="bat"
 
 # Shell improvements
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -110,6 +115,10 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 # Logbook
 function lb() {
     nvim ~/logbook/$(date '+%Y-%m-%d').md
+}
+# gitignore.io
+gi () {
+  curl -fL https://www.gitignore.io/api/${(j:,:)@}
 }
 # Aliases
 alias sshfre1='ssh salar@fre1.softinio.net'
@@ -124,3 +133,12 @@ export PATH="/usr/local/sbin:$PATH"
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
+# Nix
+if [ -e /home/salar/.nix-profile/etc/profile.d/nix.sh ]; then . /home/salar/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+
+
+# added by travis gem
+[ -f /home/salar/.travis/travis.sh ] && source /home/salar/.travis/travis.sh
+
+# Haskell
+. $HOME/.ghcup/env
