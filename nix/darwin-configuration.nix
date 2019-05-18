@@ -4,10 +4,10 @@
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
   environment.systemPackages =
-    [ pkgs.lua
-      # ( pkgs.lua.withPackages (ps: with ps; [ luarocks mpack ]) )
-      ( pkgs.python36.withPackages (ps: with ps; [ pip flake8 yapf black pynvim python-language-server ]) )
-      # pkgs.neovim
+    [ 
+      ( pkgs.lua.withPackages (ps: with ps; [ luarocks mpack ]) )
+      ( pkgs.python36.withPackages (ps: with ps; [ pip flake8 yapf black pynvim python-language-server.override { pylint = null; } ]) )
+      pkgs.neovim
       pkgs.zsh
       pkgs.git
       pkgs.awscli
@@ -36,6 +36,9 @@
       pkgs.coursier
       pkgs.ammonite
       pkgs.bloop
+      pkgs.coreutils
+      pkgs.yarn
+      pkgs.openssl
     ];
 
   # Use a custom configuration.nix location.
@@ -43,7 +46,7 @@
   # environment.darwinConfig = "$HOME/.config/nixpkgs/darwin/configuration.nix";
 
   # Auto upgrade nix package and the daemon service.
-  # services.nix-daemon.enable = true;
+  services.nix-daemon.enable = true;
   # nix.package = pkgs.nix;
 
   # Create /etc/bashrc that loads the nix-darwin environment.
@@ -57,6 +60,9 @@
 
   # You should generally set this to the total number of logical cores in your system.
   # $ sysctl -n hw.ncpu
-  nix.maxJobs = 8;
+  nix.maxJobs = 2 ;
   nix.buildCores = 1;
+
+  # Use sandbox
+  # nix.useSandbox = true;
 }

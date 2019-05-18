@@ -26,8 +26,8 @@ if ! has('nvim')
 else
     set nohlsearch
     if g:uname == 'Darwin'
-        let g:python_host_prog = '/usr/local/bin/python'
-        let g:python3_host_prog = '/usr/local/bin/python3'
+        let g:python_host_prog = '/run/current-system/sw/bin/python'
+        let g:python3_host_prog = '/run/current-system/sw/bin/python3'
         set guifont=SF\ Mono:h12
         let g:clipboard = {
               \ 'name': 'pbcopy',
