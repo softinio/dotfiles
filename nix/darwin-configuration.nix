@@ -39,6 +39,7 @@
       pkgs.coreutils
       pkgs.yarn
       pkgs.openssl
+      pkgs.xz
     ];
 
   # Use a custom configuration.nix location.
