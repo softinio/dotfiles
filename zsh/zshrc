@@ -16,24 +16,85 @@ elif [[ "$unamestr" == 'Darwin' ]]; then
 fi
 
 # zsh
-updatezsh() {
- antibody bundle <~/.dotfiles/zsh/zsh_plugins.txt >~/.zsh_plugins.sh
- antibody update
-}
-source ~/.zsh_plugins.sh
-source ~/Library/Caches/antibody/https-COLON--SLASH--SLASH-github.com-SLASH-denysdovhan-SLASH-spaceship-prompt/spaceship.zsh
-ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=(history-substring-search-up history-substring-search-down) # Add history-substring-search-* widgets to list of widgets that clear the autosuggestion
-ZSH_AUTOSUGGEST_CLEAR_WIDGETS=("${(@)ZSH_AUTOSUGGEST_CLEAR_WIDGETS:#(up|down)-line-or-history}") # Remove *-line-or-history widgets from list of widgets that clear the autosuggestion to avoid conflict with history-substring-search-* widgets
-zmodload zsh/terminfo
-bindkey "$terminfo[cuu1]" history-substring-search-up
-bindkey "$terminfo[cud1]" history-substring-search-down
-export ENHANCD_FILTER=fzf
+if [[ ! -d ~/.zplug ]]; then
+  git clone https://github.com/zplug/zplug ~/.zplug
+  source ~/.zplug/init.zsh && zplug update --self
+fi
+
+source ~/.zplug/init.zsh
+zplug "zplug/zplug"
+zplug denysdovhan/spaceship-prompt, use:spaceship.zsh, from:github, as:theme
+zplug "modules/git", from:prezto 
+zplug "modules/history", from:prezto 
+zplug "modules/ssh", from:prezto 
+zplug "modules/terminal", from:prezto 
+zplug "modules/python", from:prezto 
+zplug "modules/node", from:prezto 
+zplug "lukechilds/zsh-better-npm-completion", defer:2
+zplug "zsh-users/zsh-completions"
+zplug "zsh-users/zsh-autosuggestions"
+if zplug check zsh-users/zsh-autosuggestions; then
+  ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=(history-substring-search-up history-substring-search-down) # Add history-substring-search-* widgets to list of widgets that clear the autosuggestion
+  ZSH_AUTOSUGGEST_CLEAR_WIDGETS=("${(@)ZSH_AUTOSUGGEST_CLEAR_WIDGETS:#(up|down)-line-or-history}") # Remove *-line-or-history widgets from list of widgets that clear the autosuggestion to avoid conflict with history-substring-search-* widgets
+fi
+zplug "zdharma/fast-syntax-highlighting", from:github, defer:2
+zplug "zsh-users/zsh-history-substring-search"
+if zplug check zsh-users/zsh-history-substring-search; then
+  zmodload zsh/terminfo
+  bindkey "$terminfo[cuu1]" history-substring-search-up
+  bindkey "$terminfo[cud1]" history-substring-search-down
+fi
+zplug "b4b4r07/enhancd", use:init.sh
+zplug "lukechilds/zsh-nvm"
+zplug "supercrabtree/k"
+zplug "rupa/z", use:z.sh
+
+if ! zplug check --verbose; then
+    printf "Install? [y/N]: "
+    if read -q; then
+        echo; zplug install
+    fi
+fi
+
+zplug load
+SPACESHIP_PROMPT_ORDER=(
+  # time        # Time stamps section (Disabled)
+  user          # Username section
+  dir           # Current directory section
+  host          # Hostname section
+  git           # Git section (git_branch + git_status)
+  # hg            # Mercurial section (hg_branch  + hg_status)
+  # package     # Package version (Disabled)
+  node          # Node.js section
+  ruby          # Ruby section
+  # xcode       # Xcode section (Disabled)
+  swift         # Swift section
+  golang        # Go section
+  rust          # Rust section
+  haskell       # Haskell Stack section
+  # julia       # Julia section (Disabled)
+  docker      # Docker section (Disabled)
+  aws           # Amazon Web Services section
+  venv          # virtualenv section
+  # conda         # conda virtualenv section
+  # pyenv         # Pyenv section
+  # dotnet        # .NET section
+  # ember       # Ember.js section (Disabled)
+  kubecontext   # Kubectl context section
+  # terraform     # Terraform workspace section
+  exec_time     # Execution time
+  line_sep      # Line break
+  battery       # Battery level and status
+  # vi_mode     # Vi-mode indicator (Disabled)
+  jobs          # Background jobs indicator
+  exit_code     # Exit code section
+  char          # Prompt character
+  )
 
 # General
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export TERM=xterm-256color
-# export PATH=/usr/local/bin:$PATH
 
 # aliases 
 alias dc="docker-compose"
@@ -123,22 +184,8 @@ gi () {
 # Aliases
 alias sshfre1='ssh salar@fre1.softinio.net'
 
-# NVM 
-export NVM_DIR=$(realpath "$HOME/.nvm")
-[[ -s $HOME/.nvm/nvm.sh ]] && . $HOME/.nvm/nvm.sh
-alias npmls="npm list -g --depth=0"
-
-[[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
-export PATH="/usr/local/sbin:$PATH"
-
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
-
 # Nix
 if [ -e /home/salar/.nix-profile/etc/profile.d/nix.sh ]; then . /home/salar/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
-
-
-# added by travis gem
-[ -f /home/salar/.travis/travis.sh ] && source /home/salar/.travis/travis.sh
 
 # Haskell
 . $HOME/.ghcup/env
