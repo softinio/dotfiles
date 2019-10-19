@@ -23,8 +23,9 @@
       pkgs.httpie
       pkgs.global
       pkgs.fd
-      pkgs.curl
+      pkgs.curlFull
       pkgs.wget
+      pkgs.readline
       pkgs.tree
       pkgs.antibody
       pkgs.exa
@@ -40,6 +41,8 @@
       pkgs.yarn
       pkgs.openssl
       pkgs.xz
+      pkgs.gitAndTools.hub
+      pkgs.nodejs-10_x
     ];
 
   # Use a custom configuration.nix location.

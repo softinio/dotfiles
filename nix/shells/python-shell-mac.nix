@@ -5,9 +5,9 @@ stdenv.mkDerivation rec {
   buildInputs = [
     darwin.cf-private
     darwin.apple_sdk.frameworks.CoreServices
-    python36
-    python36Packages.virtualenv
-    python36Packages.pip
+    python37
+    python37Packages.virtualenv
+    python37Packages.pip
     postgresql
     redis
   ];
@@ -30,7 +30,7 @@ stdenv.mkDerivation rec {
     redis-server --dir .env/data/redis &
     virtualenv --no-setuptools .env > /dev/null
     source .env/bin/activate
-    export MYENV=nix_firstjob_api
+    export MYENV=nix_python
     trap "'pg_ctl' stop --silent -W && 'redis-cli' shutdown" EXIT
   '';
 }
