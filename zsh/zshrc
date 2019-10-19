@@ -4,16 +4,7 @@
 fpath+=~/.zfunc
 
 # Detect OS
-platform='unknown'
-unamestr=`uname`
-unamestrdtl=`uname -a`
-if [[ "$unamestr" == 'Linux' ]]; then
-   platform='linux'
-elif [[ "$unamestr" == 'FreeBSD' ]]; then
-   platform='freebsd'
-elif [[ "$unamestr" == 'Darwin' ]]; then
-   platform='macosx'
-fi
+platform='macosx'
 
 # zsh
 updatezsh() {
@@ -33,10 +24,10 @@ export ENHANCD_FILTER=fzf
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export TERM=xterm-256color
-export PATH=/usr/local/bin:$PATH
+eval "$(hub alias -s bash)"
 
 # aliases 
-alias dc="docker-compose"
+alias dc='/usr/local/bin/docker-compose'
 alias pj='python -m json.tool'
 alias cat="bat"
 alias g="git"
@@ -45,15 +36,13 @@ alias gws="git status"
 alias nixre="darwin-rebuild switch"
 alias nixgc="nix-collect-garbage -d"
 alias nixq="nix-env -qa"
-alias nixupgrade="sudo -i sh -c 'nix-channel --update && nix-env -iA nixpkgs.nix && launchctl remove org.nixos.nix-daemon && launchctl load /Library/LaunchDaemons/org.nixos.nix-daemon.plist'"
+alias nixupgrade="nix-channel --update; nix-env -iA nixpkgs.nix"
 alias nixup="nix-env -u"
+if [ -e /Users/salar/.nix-profile/etc/profile.d/nix.sh ]; then . /Users/salar/.nix-profile/etc/profile.d/nix.sh; fi
 
 # vim / Neovim
 alias vim="nvim"
 alias vimdiff='nvim -d'
-export PATH=~/notes:$PATH
-alias notes="cd ~/notes; fuz"
-alias notesi="cd ~/notes; nvim"
 alias nvimi="nvim +PlugInstall +UpdateRemotePlugins +qa"
 alias nvimu="nvim +PlugUpgrade +PlugUpdate +UpdateRemotePlugins +qa"
 export EDITOR=nvim
@@ -70,62 +59,9 @@ export GTAGSLIBPATH=/usr/include/
 # --glob: Additional conditions for search (in this case ignore everything in the .git/ folder)
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
 
-# Go Lang
-export GOPATH=$HOME/goprojects
-export PATH=$PATH:$GOPATH/bin
-
-# Python
-if [[ $platform == 'macosx' ]]; then
-    export CFLAGS="-I$(brew --prefix openssl)/include"
-    export LDFLAGS="-L$(brew --prefix openssl)/lib"
-fi
-export PYENV_ROOT=$HOME/.pyenv
-export PATH=$PYENV_ROOT/bin:$PATH
-if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
-if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
-
-# Java
-if [[ $platform == 'macosx' ]]; then
-    # eval "$(jenv init -)"
-    # test -e "/usr/libexec/java_home" && export JAVA_HOME=$(/usr/libexec/java_home)
-else
-    export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-amd64
-fi
-export PATH=$PATH:$JAVA_HOME/bin
-
-# Scala
-export SCALA_HOME=/usr/local/opt/scala/idea
-export PATH=$PATH:$SCALA_HOME/bin:~/.dotfiles/bin
-alias amm="amm --no-remote-logging"
-alias stags="ng co.pjrt.stags.cli.Main"
-autoload -U compinit
-fpath=($HOME/.bloop/zsh $fpath)
-compinit
-
-# Rust
-export PATH=$PATH:$HOME/.cargo/bin
-
-# Haskell
-export PATH=/Users/srahmanian/.local/bin:$PATH
-
 # Shell improvements
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+if [ -n "${commands[fzf-share]}" ]; then
+  source "$(fzf-share)/key-bindings.zsh"
+fi
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-
-# Logbook
-function lb() {
-    nvim ~/logbook/$(date '+%Y-%m-%d').md
-}
-# Aliases
-alias sshfre1='ssh salar@fre1.softinio.net'
-
-# NVM 
-#export NVM_DIR=$(realpath "$HOME/.nvm")
-#[[ -s $HOME/.nvm/nvm.sh ]] && . $HOME/.nvm/nvm.sh
-#alias npmls="npm list -g --depth=0"
-
-[[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
-export PATH="/usr/local/sbin:$PATH"
-
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
