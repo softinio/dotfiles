@@ -1,7 +1,7 @@
 [user]
     user = Salar Rahmanian
-    email = code@softinio.com
-    name = Salar Rahmanian
+	email = code@softinio.com
+	name = Salar Rahmanian
 
 [core]
     trustctime = false
