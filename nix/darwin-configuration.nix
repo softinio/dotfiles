@@ -6,7 +6,7 @@
   environment.systemPackages =
     [ 
       ( pkgs.lua.withPackages (ps: with ps; [ luarocks mpack ]) )
-      ( pkgs.python36.withPackages (ps: with ps; [ pip flake8 yapf black pynvim python-language-server.override { pylint = null; } ]) )
+      ( pkgs.python37.withPackages (ps: with ps; [ pip flake8 black pynvim python-language-server.override { pylint = null; } ]) )
       pkgs.neovim
       pkgs.zsh
       pkgs.git
@@ -64,7 +64,7 @@
 
   # You should generally set this to the total number of logical cores in your system.
   # $ sysctl -n hw.ncpu
-  nix.maxJobs = 2 ;
+  nix.maxJobs = 16 ;
   nix.buildCores = 1;
 
   # Use sandbox
