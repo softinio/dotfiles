@@ -10,4 +10,5 @@ sindresorhus/pure
 zsh-users/zsh-history-substring-search
 zsh-users/zsh-syntax-highlighting
 spwhitt/nix-zsh-completions
+chisui/zsh-nix-shell
 

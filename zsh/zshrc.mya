@@ -28,17 +28,18 @@ eval "$(hub alias -s bash)"
 
 # aliases 
 alias dc='/usr/local/bin/docker-compose'
+alias dch='/Users/salarrahmanian/MyaScripts/docker-compose-hooked'
 alias pj='python -m json.tool'
 alias cat="bat"
 alias g="git"
 alias gl="git log"
 alias gws="git status"
-alias nixre="darwin-rebuild switch"
+alias nixre="nix-rebuild switch"
 alias nixgc="nix-collect-garbage -d"
 alias nixq="nix-env -qa"
 alias nixupgrade="nix-channel --update; nix-env -iA nixpkgs.nix"
 alias nixup="nix-env -u"
-if [ -e /Users/salar/.nix-profile/etc/profile.d/nix.sh ]; then . /Users/salar/.nix-profile/etc/profile.d/nix.sh; fi
+if [ -e /Users/salarrahmanian/.nix-profile/etc/profile.d/nix.sh ]; then . /Users/salarrahmanian/.nix-profile/etc/profile.d/nix.sh; fi
 
 # vim / Neovim
 alias vim="nvim"
@@ -46,7 +47,7 @@ alias vimdiff='nvim -d'
 alias nvimi="nvim +PlugInstall +UpdateRemotePlugins +qa"
 alias nvimu="nvim +PlugUpgrade +PlugUpdate +UpdateRemotePlugins +qa"
 export EDITOR=nvim
-alias tabninecfg="nvim /Users/salar/Library/Preferences/TabNine/TabNine.toml"
+alias tabninecfg="nvim /Users/srahmanian/Library/Preferences/TabNine/TabNine.toml"
 
 # GTAGS
 export GTAGSLIBPATH=/usr/include/
@@ -58,6 +59,16 @@ export GTAGSLIBPATH=/usr/include/
 # --follow: Follow symlinks
 # --glob: Additional conditions for search (in this case ignore everything in the .git/ folder)
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
+
+# Python
+if [[ $platform == 'macosx' ]]; then
+    export CFLAGS="-I$(brew --prefix openssl)/include"
+    export LDFLAGS="-L$(brew --prefix openssl)/lib"
+fi
+#export PYENV_ROOT=$HOME/.pyenv
+#export PATH=$PYENV_ROOT/bin:$PATH
+#if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
+#if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
 
 # Shell improvements
 if [ -n "${commands[fzf-share]}" ]; then
