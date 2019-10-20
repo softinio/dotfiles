@@ -1,5 +1,4 @@
 mafredri/zsh-async
-rupa/z
 supercrabtree/k
 b4b4r07/enhancd
 denysdovhan/spaceship-prompt

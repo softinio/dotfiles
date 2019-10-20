@@ -65,7 +65,6 @@ let g:deoplete#enable_at_startup = 1
 set fileformat=unix
 set encoding=utf-8
 set fileencoding=utf-8
-set fileencodings=utf-8
 let g:seoul256_background = 233
 silent! colorscheme seoul256
 let g:seoul256_srgb = 1
