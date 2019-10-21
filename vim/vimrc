@@ -60,12 +60,9 @@ else
     :nnoremap <A-l> <C-w>l
 endif
 
-let g:deoplete#enable_at_startup = 1
-
 set fileformat=unix
 set encoding=utf-8
 set fileencoding=utf-8
-set fileencodings=utf-8
 let g:seoul256_background = 233
 silent! colorscheme seoul256
 let g:seoul256_srgb = 1
@@ -351,45 +348,6 @@ imap <C-k>     <Plug>(neosnippet_expand_or_jump)
 smap <C-k>     <Plug>(neosnippet_expand_or_jump)
 xmap <C-k>     <Plug>(neosnippet_expand_target)
 
-" SuperTab like snippets behavior.
-" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
-imap <expr><TAB>
-\ pumvisible() ? "\<C-n>" :
-\ neosnippet#expandable_or_jumpable() ?
-\    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-
-" For conceal markers.
-" if has('conceal')
-"   set conceallevel=2 concealcursor=niv
-" endif
-let g:neosnippet#snippets_directory="~/.dotfiles/snippets"
-let g:neosnippet#enable_snipmate_compatibility = 1
-let g:ultisnips_python_style="google"
-
-" Ale
-" Also see: ~/.vim/ftplugin for other ale related config
-let g:ale_completion_enabled = 1
-let g:airline#extensions#ale#enabled = 1
-let g:ale_linters = {
-\   'javascript': ['standard'],
-\   'typescript': ['tslint', 'tsserver'],
-\   'python': ['flake8'],
-\}
-let g:ale_fix_on_save = 0
-let g:ale_javascript_standard_args="--parser babel-eslint"
-nmap <silent> <C-p> <Plug>(ale_previous_wrap)
-nmap <silent> <C-n> <Plug>(ale_next_wrap)
-autocmd bufwritepost *.js silent !standard --fix --parser babel-eslint %
-au BufNewFile,BufRead *.js 
-      \ set tabstop=2 |
-      \ set softtabstop=2 |
-      \ set shiftwidth=2 |
-      \ set filetype=javascript.jsx
-let g:javascript_enable_domhtmlcss=1
-let g:jsx_ext_required=0
-let g:javascript_plugin_jsdoc=1
 
 " ctags
 let g:gen_tags#use_cache_dir = 0
@@ -397,38 +355,6 @@ let g:gen_tags#ctags_auto_gen = 1
 
 "Commands
 com! FormatJSON %!python -m json.tool
-
-"Scala
-function! QualifiedTagJump() abort
-  let l:plain_tag = expand("<cword>")
-  let l:orig_keyword = &iskeyword
-  set iskeyword+=\.
-  let l:word = expand("<cword>")
-  let &iskeyword = l:orig_keyword
-
-  let l:splitted = split(l:word, '\.')
-  let l:acc = []
-  for wo in l:splitted
-    let l:acc = add(l:acc, wo)
-    if wo ==# l:plain_tag
-      break
-    endif
-  endfor
-
-  let l:combined = join(l:acc, ".")
-  try
-    execute "ta " . l:combined
-  catch /.*E426.*/ " Tag not found
-    execute "ta " . l:plain_tag
-  endtry
-endfunction
-
-nnoremap <silent> <C-]> :<C-u>call QualifiedTagJump()<CR>
-let g:go_version_warning = 0
-
-if filereadable(expand("~/.vimrc.local"))
- source ~/.vimrc.local
-endif
 
 "haskell
 let g:ghcid_command = "stack exec ghcid --"
