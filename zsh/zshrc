@@ -65,3 +65,9 @@ if [ -n "${commands[fzf-share]}" ]; then
 fi
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# ssh aliases
+alias sshfre1='ssh salar@fre1.softinio.net'
+

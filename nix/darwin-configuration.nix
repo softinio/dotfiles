@@ -43,6 +43,7 @@
       pkgs.xz
       pkgs.gitAndTools.hub
       pkgs.nodejs-10_x
+      pkgs.rustup
     ];
 
   # Use a custom configuration.nix location.
