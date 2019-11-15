@@ -1,6 +1,5 @@
 mafredri/zsh-async
 supercrabtree/k
-b4b4r07/enhancd
 denysdovhan/spaceship-prompt
 Tarrasch/zsh-bd
 zsh-users/zsh-completions

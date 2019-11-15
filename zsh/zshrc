@@ -7,6 +7,7 @@ fpath+=~/.zfunc
 platform='macosx'
 
 # zsh
+ZSH_DISABLE_COMPFIX=tru
 updatezsh() {
  antibody bundle <~/.dotfiles/zsh/zsh_plugins.txt >~/.zsh_plugins.sh
  antibody update
@@ -18,7 +19,6 @@ ZSH_AUTOSUGGEST_CLEAR_WIDGETS=("${(@)ZSH_AUTOSUGGEST_CLEAR_WIDGETS:#(up|down)-li
 zmodload zsh/terminfo
 bindkey "$terminfo[cuu1]" history-substring-search-up
 bindkey "$terminfo[cud1]" history-substring-search-down
-export ENHANCD_FILTER=fzf
 
 # General
 export LANG=en_US.UTF-8
