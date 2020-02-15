@@ -1,11 +1,23 @@
 // neovim: ~/.config/nvim/coc-settings.json
-{
-  "languageserver": {
-    "metals": {
-      "command": "metals-vim",
-      "rootPatterns": ["build.sbt"],
-      "filetypes": ["scala", "sbt"]
-    }
-  }
-}
 
+{
+  // "metals.serverVersion": "0.8.0+161-ae046f9c-SNAPSHOT",
+  "coc.preferences.formatOnType": true,
+  "codeLens.enable": true,
+  "diagnostic.errorSign": "✘",
+  "diagnostic.warningSign": "⚠ "
+  // "coc.preferences.enableFloatHighlight": false,
+  // Keep this in here for testing
+  // "languageserver": {
+  //   "metals": {
+  //     "command": "metals-vim",
+  //     "rootPatterns": [
+  //       "build.sbt"
+  //     ],
+  //     "filetypes": [
+  //       "scala",
+  //       "sbt"
+  //     ]
+  //   }
+  // }
+}

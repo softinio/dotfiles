@@ -2,11 +2,14 @@
 #
 # Custom Completion Funcs
 fpath+=~/.zfunc
+autoload -Uz compinit
+compinit -u
 
 # Detect OS
 platform='macosx'
 
 # zsh
+export SPACESHIP_CHAR_SYMBOL="λ "
 updatezsh() {
  antibody bundle <~/.dotfiles/zsh/zsh_plugins.txt >~/.zsh_plugins.sh
  antibody update
@@ -27,12 +30,13 @@ export TERM=xterm-256color
 eval "$(hub alias -s bash)"
 
 # aliases 
-alias dc='/usr/local/bin/docker-compose'
 alias pj='python -m json.tool'
 alias cat="bat"
 alias g="git"
 alias gl="git log"
 alias gws="git status"
+alias grep='grep --color=auto'
+alias new-sbt='sbt new scala/scala-seed.g8'
 alias nixre="darwin-rebuild switch"
 alias nixgc="nix-collect-garbage -d"
 alias nixq="nix-env -qa"
@@ -41,15 +45,13 @@ alias nixup="nix-env -u"
 if [ -e /Users/salar/.nix-profile/etc/profile.d/nix.sh ]; then . /Users/salar/.nix-profile/etc/profile.d/nix.sh; fi
 
 # vim / Neovim
+alias v='nvim'
 alias vim="nvim"
 alias vimdiff='nvim -d'
 alias nvimi="nvim +PlugInstall +UpdateRemotePlugins +qa"
 alias nvimu="nvim +PlugUpgrade +PlugUpdate +UpdateRemotePlugins +qa"
 export EDITOR=nvim
 alias tabninecfg="nvim /Users/salar/Library/Preferences/TabNine/TabNine.toml"
-
-# GTAGS
-export GTAGSLIBPATH=/usr/include/
 
 # FZF and ripgrep
 # --files: List files that would be searched but do not search
@@ -70,4 +72,9 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 
 # ssh aliases
 alias sshfre1='ssh salar@fre1.softinio.net'
+alias moshfre1='mosh salar@fre1.softinio.net'
+
+# PATH
+export PATH=$HOME/bin:/run/current-system/sw/bin:$PATH
+export JAVA_HOME="${$(readlink -e $(type -p java))%*/bin/java}"
 

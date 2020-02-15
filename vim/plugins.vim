@@ -9,16 +9,21 @@ call plug#begin('~/.vim/plugged')
  Plug 'vim-airline/vim-airline'
  Plug 'vim-airline/vim-airline-themes'
  Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
+ Plug 'neoclide/coc-html'
  Plug 'neoclide/coc-json'
  Plug 'neoclide/coc-python'
+ Plug 'neoclide/coc-snippets'
  Plug 'neoclide/coc-tabnine'
  Plug 'neoclide/coc-yaml'
+ Plug 'ckipp01/coc-metals', {'do': 'yarn install --frozen-lockfile'}
+ Plug 'fannheyward/coc-pyright'
+ Plug 'fannheyward/coc-xml'
+ Plug 'honza/vim-snippets'
  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
  Plug 'junegunn/fzf.vim'
  Plug 'junegunn/seoul256.vim'
  Plug 'junegunn/vim-slash'
  Plug 'Shougo/echodoc.vim'
- Plug 'majutsushi/tagbar'
  Plug 'scrooloose/nerdtree'
  Plug 'Xuyuanp/nerdtree-git-plugin'
  Plug 'tpope/vim-fugitive'
@@ -31,12 +36,7 @@ call plug#begin('~/.vim/plugged')
  Plug 'mileszs/ack.vim'
  Plug 'luochen1990/rainbow'
  Plug 'gorkunov/smartpairs.vim'
- Plug 'ervandew/supertab'
- Plug 'brooth/far.vim'
  Plug 'jiangmiao/auto-pairs'
- Plug 'jsfaint/gen_tags.vim'
- Plug 'lilydjwg/colorizer'
- Plug 'ryanoasis/vim-devicons'
  Plug 'cespare/vim-toml'
  Plug 'elzr/vim-json'
  Plug 'godlygeek/tabular'
@@ -45,6 +45,7 @@ call plug#begin('~/.vim/plugged')
 
  Plug 'vimlab/split-term.vim'
  Plug 'ndmitchell/ghcid', { 'rtp': 'plugins/nvim' }
+
 
  function! BuildComposer(info)
   if a:info.status != 'unchanged' || a:info.force

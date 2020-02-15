@@ -16,4 +16,5 @@ nifi.env.local
 *.iml
 .root
 __pycache__/
+project/metals.sbt
 
