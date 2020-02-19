@@ -228,6 +228,9 @@ au BufRead,BufNewFile *.sbt set filetype=scala
 autocmd BufRead *.rs :setlocal tags=./rusty-tags.vi;/,$RUST_SRC_PATH/rusty-tags.vi
 autocmd BufWrite *.rs :silent! exec "!rusty-tags vi --quiet --start-dir=" . expand('%:p:h') . "&" <bar> redraw!
 
+" rooter
+let g:rooter_patterns = ['build.sbt', '.git/']
+
 "}}}
 
 "}}}

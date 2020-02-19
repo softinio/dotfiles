@@ -5,7 +5,8 @@
   "coc.preferences.formatOnType": true,
   "codeLens.enable": true,
   "diagnostic.errorSign": "✘",
-  "diagnostic.warningSign": "⚠ "
+  "diagnostic.warningSign": "⚠ ",
+  "python.jediEnabled": false
   // "coc.preferences.enableFloatHighlight": false,
   // Keep this in here for testing
   // "languageserver": {
