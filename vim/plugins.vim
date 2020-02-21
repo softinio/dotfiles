@@ -44,6 +44,8 @@ call plug#begin('~/.vim/plugged')
  Plug 'vimlab/split-term.vim'
  Plug 'ndmitchell/ghcid', { 'rtp': 'plugins/nvim' }
 
+ Plug 'christoomey/vim-tmux-navigator'
+
 
  function! BuildComposer(info)
   if a:info.status != 'unchanged' || a:info.force

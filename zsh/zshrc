@@ -53,6 +53,12 @@ alias nvimu="nvim +PlugUpgrade +PlugUpdate +UpdateRemotePlugins +qa"
 export EDITOR=nvim
 alias tabninecfg="nvim /Users/salar/Library/Preferences/TabNine/TabNine.toml"
 
+# Tmux
+alias t="tmux"
+alias ta="t a -t"
+alias tls="t ls"
+alias tn="t new -t"
+
 # FZF and ripgrep
 # --files: List files that would be searched but do not search
 # --no-ignore: Do not respect .gitignore, etc...

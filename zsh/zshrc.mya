@@ -34,7 +34,7 @@ alias cat="bat"
 alias g="git"
 alias gl="git log"
 alias gws="git status"
-alias nixre="nix-rebuild switch"
+alias nixre="darwin-rebuild switch"
 alias nixgc="nix-collect-garbage -d"
 alias nixq="nix-env -qa"
 alias nixupgrade="nix-channel --update; nix-env -iA nixpkgs.nix"
@@ -42,12 +42,19 @@ alias nixup="nix-env -u"
 if [ -e /Users/salarrahmanian/.nix-profile/etc/profile.d/nix.sh ]; then . /Users/salarrahmanian/.nix-profile/etc/profile.d/nix.sh; fi
 
 # vim / Neovim
+alias v="nvim"
 alias vim="nvim"
 alias vimdiff='nvim -d'
 alias nvimi="nvim +PlugInstall +UpdateRemotePlugins +qa"
 alias nvimu="nvim +PlugUpgrade +PlugUpdate +UpdateRemotePlugins +qa"
 export EDITOR=nvim
 alias tabninecfg="nvim /Users/srahmanian/Library/Preferences/TabNine/TabNine.toml"
+
+# Tmux
+alias t="tmux"
+alias ta="t a -t"
+alias tls="t ls"
+alias tn="t new -t"
 
 # GTAGS
 export GTAGSLIBPATH=/usr/include/

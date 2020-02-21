@@ -50,7 +50,6 @@
       pkgs.gnupg
       pkgs.alacritty
       pkgs.tmux
-      pkgs.byobu
       pkgs.exercism
     ];
 
