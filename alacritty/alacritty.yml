@@ -1,0 +1,144 @@
+#
+# Alacritty config
+#
+
+env:
+  TERM: xterm-256color
+
+window:
+  dimensions:
+    columns: 360
+    lines: 90
+
+  padding:
+    x: 5
+    y: 0
+
+  dynamic_padding: false
+  decorations: buttonless
+  startup_mode: Windowed
+
+scrolling:
+  history: 10000
+  multiplier: 3
+  scrolling_multiplier: 3
+
+tabspaces: 4
+
+font:
+  normal:
+    family: SF Mono
+    style: Light
+  italic:
+    family: SF Mono
+    style: LightItalic
+  bold:
+    family: SF Mono
+    style: Regular
+
+  size: 13
+
+  offset:
+    x: 0
+    y: 0
+
+  glyph_offset:
+    x: 0
+    y: 0
+
+  use_thin_strokes: false
+
+visual_bell:
+  animation: EaseOutExpo
+  duration: 0
+  color: '0xffffff'
+
+# Colors (Ayu Dark)
+colors:
+  # Default colors
+  primary:
+    background: '0x0A0E14'
+    foreground: '0xB3B1AD'
+
+  # Normal colors
+  normal:
+    black: '0x01060E'
+    red: '0xEA6C73'
+    green: '0x91B362'
+    yellow: '0xF9AF4F'
+    blue: '0x53BDFA'
+    magenta: '0xFAE994'
+    cyan: '0x90E1C6'
+    white: '0xC7C7C7'
+
+  # Bright colors
+  bright:
+    black: '0x686868'
+    red: '0xF07178'
+    green: '0xC2D94C'
+    yellow: '0xFFB454'
+    blue: '0x59C2FF'
+    magenta: '0xFFEE99'
+    cyan: '0x95E6CB'
+    white: '0xFFFFFF'
+    cyan:    '0x56b6c2'
+    white:   '0xffffff'
+
+background_opacity: 1.00
+
+mouse_bindings:
+  - { mouse: Middle, action: PasteSelection }
+
+mouse:
+  double_click: { threshold: 300 }
+  triple_click: { threshold: 300 }
+
+  hide_when_typing: true
+
+  url:
+    launcher:
+      program: open
+      args: []
+    # modifiers: None
+
+selection:
+  semantic_escape_chars: ",│`|:\"' ()[]{}<>"
+  save_to_clipboard: true
+
+dynamic_title: true
+
+cursor:
+  style: Underline
+  unfocused_hollow: false
+
+live_config_reload: true
+enable_experimental_conpty_backend: false
+
+alt_send_esc: true
+
+debug:
+  render_timer: false
+  persistent_logging: false
+  log_level: Warn
+  print_events: false
+  ref_test: false
+
+key_bindings:
+  - { key: Key0,   mods: Command,         action: ResetFontSize    }
+  - { key: Equals, mods: Command,         action: IncreaseFontSize }
+  - { key: Add,    mods: Command,         action: IncreaseFontSize }
+  - { key: Minus,  mods: Command,         action: DecreaseFontSize }
+  - { key: K,      mods: Command,         action: ClearHistory     }
+  - { key: K,      mods: Command,         chars: "\x0c"            }
+  - { key: V,      mods: Command,         action: Paste            }
+  - { key: C,      mods: Command,         action: Copy             }
+  - { key: H,      mods: Command,         action: Hide             }
+  - { key: Q,      mods: Command,         action: Quit             }
+  - { key: W,      mods: Command,         action: Quit             }
+  - { key: F,      mods: Command|Control, action: ToggleFullscreen }
+    # ---- Custom stuff ----
+    # Fix `#` symbol not working on macOS, or at least with specific Alacritty version
+  - { key: Key3,   mods: Alt,     chars: "\x23"                    }
+    # Open new window easily with <cmd><n>
+  - { key: N,      mods: Command, command: { program: "open", args: ["-n", "/Applications/Alacritty.app"] } }
+

@@ -23,6 +23,7 @@ call plug#begin('~/.vim/plugged')
  Plug 'scrooloose/nerdtree'
  Plug 'Xuyuanp/nerdtree-git-plugin'
  Plug 'tpope/vim-fugitive'
+ Plug 'tpope/vim-obsession'
  Plug 'tpope/vim-rhubarb'
  Plug 'tpope/vim-surround'
  Plug 'tpope/vim-commentary'
@@ -45,6 +46,7 @@ call plug#begin('~/.vim/plugged')
  Plug 'ndmitchell/ghcid', { 'rtp': 'plugins/nvim' }
 
  Plug 'christoomey/vim-tmux-navigator'
+ Plug 'tmux-plugins/vim-tmux'
 
 
  function! BuildComposer(info)

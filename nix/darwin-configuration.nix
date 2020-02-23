@@ -48,9 +48,10 @@
       pkgs.mdbook
       pkgs.ranger
       pkgs.gnupg
-      pkgs.alacritty
       pkgs.tmux
       pkgs.exercism
+      pkgs.lazygit
+      pkgs.ddgr
     ];
 
   # Use a custom configuration.nix location.

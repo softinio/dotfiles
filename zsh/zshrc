@@ -1,7 +1,7 @@
 # Salar Rahmanian - .zshrc file
 #
 # Custom Completion Funcs
-fpath+=~/.zfunc
+fpath+=~/.zsh_functions
 autoload -Uz compinit
 compinit -u
 
@@ -35,6 +35,7 @@ alias cat="bat"
 alias g="git"
 alias gl="git log"
 alias gws="git status"
+alias lg='lazygit'
 alias grep='grep --color=auto'
 alias new-sbt='sbt new scala/scala-seed.g8'
 alias nixre="darwin-rebuild switch"
