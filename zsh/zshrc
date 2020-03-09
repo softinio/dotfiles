@@ -34,8 +34,10 @@ alias pj='python -m json.tool'
 alias cat="bat"
 alias g="git"
 alias gl="git log"
+alias gc="git commit -m"
+alias gca="git commit -am"
 alias gws="git status"
-alias lg='lazygit'
+alias gforksync="git fetch upstream && git merge upstream/master && git push origin master"
 alias grep='grep --color=auto'
 alias new-sbt='sbt new scala/scala-seed.g8'
 alias nixre="darwin-rebuild switch"
@@ -59,6 +61,7 @@ alias t="tmux"
 alias ta="t a -t"
 alias tls="t ls"
 alias tn="t new -t"
+alias tkill="t kill-session -t"
 
 # FZF and ripgrep
 # --files: List files that would be searched but do not search
