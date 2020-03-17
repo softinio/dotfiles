@@ -16,7 +16,7 @@ call plug#begin('~/.vim/plugged')
  Plug 'neoclide/coc-snippets'
  Plug 'neoclide/coc-tabnine'
  Plug 'neoclide/coc-yaml'
- Plug 'ckipp01/coc-metals', {'do': 'yarn install --frozen-lockfile'}
+ Plug 'scalameta/coc-metals', {'do': 'yarn install --frozen-lockfile'}
  Plug 'fannheyward/coc-pyright'
  Plug 'fannheyward/coc-xml'
  Plug 'honza/vim-snippets'
@@ -37,10 +37,11 @@ call plug#begin('~/.vim/plugged')
  Plug 'mileszs/ack.vim'
  Plug 'luochen1990/rainbow'
  Plug 'jiangmiao/auto-pairs'
+ Plug 'sheerun/vim-polyglot'
  Plug 'elzr/vim-json'
  Plug 'godlygeek/tabular'
  Plug 'plasticboy/vim-markdown'
- Plug 'sheerun/vim-polyglot'
+ Plug 'liuchengxu/vista.vim'
 
  Plug 'vimlab/split-term.vim'
  Plug 'ndmitchell/ghcid', { 'rtp': 'plugins/nvim' }

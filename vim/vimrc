@@ -69,7 +69,7 @@ let g:seoul256_srgb = 1
 set background=dark
 set termguicolors
 set shortmess=atI
-set textwidth=100
+set textwidth=150
 set colorcolumn=80
 set cursorcolumn
 set cursorline
@@ -85,7 +85,6 @@ set showcmd
 set display+=lastline
 set autochdir
 set autoread
-nmap <F8> :TagbarToggle<CR>
 
 set clipboard=unnamed
 set encoding=utf-8
@@ -161,16 +160,10 @@ imap <c-x><c-o> <plug>(fzf-complete-line)
 map <leader>b :Buffers<cr>
 map <leader>f :Files<cr>
 map <leader>g :GFiles<cr>
-map <leader>t :Tags<cr>
+map <leader>y :Tags<cr>
 autocmd! FileType fzf tnoremap <buffer> <leader>q <c-c>
 nmap <leader>l :bnext<CR>
 nmap <leader>h :bprevious<CR>
- 
-" yapf
-autocmd FileType python nnoremap <leader>y :0,$!yapf<Cr>
-" noremap <leader>y :YapfFormat<CR>
-" vnoremap <leader>yf :YapfFormat 'full'<CR>
-" autocmd InsertLeave * YapfFormater
 " }}}
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Backups
@@ -321,6 +314,10 @@ let g:split_term_vertical = 1
 
 " json
 autocmd FileType json syntax match Comment +\/\/.\+$+
+
+" Vista
+nmap <F8> :Vista!!<CR>
+let g:vista_default_executive = 'coc'
 
 " START Configuration for coc.nvim
 " --------------------------------

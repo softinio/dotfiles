@@ -18,7 +18,8 @@
       pkgs.ripgrep
       pkgs.go
       pkgs.hugo
-      pkgs.ctags
+      pkgs.jansson
+      pkgs.universal-ctags
       pkgs.jq
       pkgs.httpie
       pkgs.global
@@ -50,8 +51,7 @@
       pkgs.gnupg
       pkgs.tmux
       pkgs.exercism
-      pkgs.lazygit
-      pkgs.ddgr
+      pkgs.niv
     ];
 
   # Use a custom configuration.nix location.
