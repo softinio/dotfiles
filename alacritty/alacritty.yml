@@ -23,8 +23,6 @@ scrolling:
   multiplier: 3
   scrolling_multiplier: 3
 
-tabspaces: 4
-
 font:
   normal:
     family: SF Mono
@@ -36,7 +34,7 @@ font:
     family: SF Mono
     style: Regular
 
-  size: 13
+  size: 20
 
   offset:
     x: 0
