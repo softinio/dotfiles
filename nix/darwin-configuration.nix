@@ -52,6 +52,7 @@
       pkgs.tmux
       pkgs.exercism
       pkgs.niv
+      pkgs.ffmpeg
     ];
 
   # Use a custom configuration.nix location.

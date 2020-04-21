@@ -32,6 +32,7 @@ eval "$(hub alias -s bash)"
 # aliases 
 alias pj='python -m json.tool'
 alias cat="bat"
+alias k="exa --long --header --git --all"
 alias g="git"
 alias gl="git log"
 alias gc="git commit -m"
@@ -45,6 +46,7 @@ alias nixgc="nix-collect-garbage -d"
 alias nixq="nix-env -qa"
 alias nixupgrade="nix-channel --update; nix-env -iA nixpkgs.nix"
 alias nixup="nix-env -u"
+alias nixversion="nix eval nixpkgs.lib.version"
 if [ -e /Users/salar/.nix-profile/etc/profile.d/nix.sh ]; then . /Users/salar/.nix-profile/etc/profile.d/nix.sh; fi
 
 # vim / Neovim

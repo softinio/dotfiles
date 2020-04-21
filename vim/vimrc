@@ -63,10 +63,17 @@ endif
 set fileformat=unix
 set encoding=utf-8
 set fileencoding=utf-8
-let g:seoul256_background = 233
-silent! colorscheme seoul256
-let g:seoul256_srgb = 1
-set background=dark
+
+"onedark.vim override: Set a custom background color in the terminal
+if (has("autocmd") && !has("gui_running"))
+  augroup colors
+    autocmd!
+    " let s:background = { "gui": "#282C34", "cterm": "235", "cterm16": "0" }
+    let s:background = { "gui": "#000000", "cterm": "235", "cterm16": "0" }
+    autocmd ColorScheme * call onedark#set_highlight("Normal", { "bg": s:background }) "No `fg` setting
+  augroup END
+endif
+colorscheme onedark
 set termguicolors
 set shortmess=atI
 set textwidth=150
@@ -93,6 +100,8 @@ set history=5000
 set laststatus=2
 set pastetoggle=<F3>
 set foldmethod=indent
+set nofoldenable
+set path+=**
 
 set showmatch
 
@@ -112,6 +121,12 @@ nnoremap <C-e> <End>
 xnoremap . :normal.<CR>
 
 let python_highlight_all=1
+
+" ctags
+" - ^] to jump to tag under cursor,
+" - g^] for ambiguous tags,
+" - ^t to backup the tag check
+command! MakeTags !ctags -R .
 
 "Wildmenu completion: use for file exclusions
 " Wildmenu completion: use for file exclusions"
@@ -208,9 +223,13 @@ let g:airline_enabled=1
 let g:airline_powerline_fonts=1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
-let g:airline_theme='tomorrow'
-"set guifont=Inconsolata\ for\ Powerline
+let g:airline_theme='onedark'
 "}}}
+
+"CtrlSF
+let g:ctrlsf_auto_focus = {
+    \ "at": "done"
+    \ }
 
 "Scala
 autocmd filetype scala setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab
@@ -284,15 +303,16 @@ function SwitchBuffer()
   b#
 endfunction
 
-nmap <Tab> :call SwitchBuffer()<CR>
+nmap <A-Tab> :call SwitchBuffer()<CR>
 
 " netrw settings
+let g:netrw_banner=0        " disable annoying banner
+let g:netrw_browse_split=4  " open in prior window
+let g:netrw_altv=1          " open splits to the right
+let g:netrw_liststyle=3     " tree view
+let g:netrw_list_hide=netrw_gitignore#Hide()
+let g:netrw_list_hide.=',\(^\|\s\s\)\zs\.\S\+'
 let g:netrw_list_hide= '.*\.pyc$'
-let g:netrw_liststyle = 3
-let g:netrw_banner = 0
-let g:netrw_browse_split = 2
-let g:netrw_winsize = 25
-let g:netrw_altv = 1
 
 " neosnippet
 " Plugin key-mappings.
