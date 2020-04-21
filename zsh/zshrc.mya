@@ -1,7 +1,13 @@
 # Salar Rahmanian - .zshrc file
 #
 # Custom Completion Funcs
-fpath+=~/.zfunc
+export PATH=/usr/local/bin:$PATH
+export NIX_PATH=$HOME/.nix-defexpr/channels${NIX_PATH:+:}$NIX_PATH
+# source "$HOME/.nix-profile/etc/profile.d/nix.sh"
+# source "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh"
+autoload -Uz compinit
+compinit
+fpath+=~/.zsh_functions
 
 # Detect OS
 platform='macosx'
@@ -26,6 +32,7 @@ export LC_ALL=en_US.UTF-8
 export TERM=xterm-256color
 eval "$(hub alias -s bash)"
 
+
 # aliases 
 alias dc='/usr/local/bin/docker-compose'
 alias dch='/Users/salarrahmanian/MyaScripts/docker-compose-hooked'
@@ -34,7 +41,7 @@ alias cat="bat"
 alias g="git"
 alias gl="git log"
 alias gws="git status"
-alias nixre="darwin-rebuild switch"
+alias nixre="home-manager switch"
 alias nixgc="nix-collect-garbage -d"
 alias nixq="nix-env -qa"
 alias nixupgrade="nix-channel --update; nix-env -iA nixpkgs.nix"
@@ -43,7 +50,6 @@ if [ -e /Users/salarrahmanian/.nix-profile/etc/profile.d/nix.sh ]; then . /Users
 
 # vim / Neovim
 alias v="nvim"
-alias vim="nvim"
 alias vimdiff='nvim -d'
 alias nvimi="nvim +PlugInstall +UpdateRemotePlugins +qa"
 alias nvimu="nvim +PlugUpgrade +PlugUpdate +UpdateRemotePlugins +qa"
@@ -55,6 +61,7 @@ alias t="tmux"
 alias ta="t a -t"
 alias tls="t ls"
 alias tn="t new -t"
+alias tkill="t kill-session -t"
 
 # GTAGS
 export GTAGSLIBPATH=/usr/include/
@@ -68,10 +75,10 @@ export GTAGSLIBPATH=/usr/include/
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
 
 # Python
-if [[ $platform == 'macosx' ]]; then
-    export CFLAGS="-I$(brew --prefix openssl)/include"
-    export LDFLAGS="-L$(brew --prefix openssl)/lib"
-fi
+# if [[ $platform == 'macosx' ]]; then
+#     export CFLAGS="-I$(brew --prefix openssl)/include"
+#     export LDFLAGS="-L$(brew --prefix openssl)/lib"
+# fi
 #export PYENV_ROOT=$HOME/.pyenv
 #export PATH=$PYENV_ROOT/bin:$PATH
 #if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
@@ -83,3 +90,5 @@ if [ -n "${commands[fzf-share]}" ]; then
 fi
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

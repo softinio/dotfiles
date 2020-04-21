@@ -19,6 +19,7 @@ stdenv.mkDerivation rec {
         virtualenv .env
     fi
     source ./.env/bin/activate
+    export PATH=$PWD/.env/bin:$PATH 
   '';
 }
 
