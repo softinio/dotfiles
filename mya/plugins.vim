@@ -35,6 +35,7 @@ call plug#begin('~/.vim/plugged')
  Plug 'airblade/vim-gitgutter'
  Plug 'airblade/vim-rooter'
  Plug 'mileszs/ack.vim'
+ Plug 'dyng/ctrlsf.vim'
  Plug 'luochen1990/rainbow'
  Plug 'jiangmiao/auto-pairs'
  Plug 'elzr/vim-json'

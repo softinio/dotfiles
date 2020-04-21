@@ -291,7 +291,7 @@ function SwitchBuffer()
   b#
 endfunction
 
-nmap <Tab> :call SwitchBuffer()<CR>
+nmap <A-Tab> :call SwitchBuffer()<CR>
 
 " netrw settings
 let g:netrw_list_hide= '.*\.pyc$'
@@ -324,7 +324,7 @@ autocmd FileType json syntax match Comment +\/\/.\+$+
 
 " vimwiki
 let g:vimwiki_list = [{'path': '~/Documents/vimwiki/',
-                      \ 'syntax': 'markdown', 'ext': '.md'}]
+                      \ 'syntax': 'markdown', 'ext': '.wiki'}]
 
 " START Configuration for coc.nvim
 " --------------------------------
