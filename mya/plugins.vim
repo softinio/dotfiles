@@ -16,8 +16,6 @@ call plug#begin('~/.vim/plugged')
  Plug 'neoclide/coc-snippets'
  Plug 'neoclide/coc-tabnine'
  Plug 'neoclide/coc-yaml'
- Plug 'ckipp01/coc-metals', {'do': 'yarn install --frozen-lockfile'}
- Plug 'fannheyward/coc-pyright'
  Plug 'fannheyward/coc-xml'
  Plug 'honza/vim-snippets'
  Plug 'scrooloose/nerdtree'
@@ -30,8 +28,8 @@ call plug#begin('~/.vim/plugged')
  Plug 'junegunn/gv.vim'
  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
  Plug 'junegunn/fzf.vim'
- Plug 'junegunn/seoul256.vim'
  Plug 'junegunn/vim-slash'
+ Plug 'joshdick/onedark.vim'
  Plug 'airblade/vim-gitgutter'
  Plug 'airblade/vim-rooter'
  Plug 'mileszs/ack.vim'

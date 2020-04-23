@@ -7,4 +7,7 @@
   "diagnostic.errorSign": "✘",
   "diagnostic.warningSign": "⚠ ",
   "python.jediEnabled": false,
+  "python.pythonPath": ".env/bin/python",
+  "python.venvPath": ".env",
+  "python.autoComplete.extraPaths": ["src"]
 }
