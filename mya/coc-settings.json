@@ -1,7 +1,6 @@
 // neovim: ~/.config/nvim/coc-settings.json
 
 {
-  // "metals.serverVersion": "0.8.0+161-ae046f9c-SNAPSHOT",
   "coc.preferences.formatOnType": true,
   "codeLens.enable": true,
   "diagnostic.errorSign": "✘",
