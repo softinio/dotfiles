@@ -64,20 +64,15 @@ set fileformat=unix
 set encoding=utf-8
 set fileencoding=utf-8
 
-"onedark.vim override: Set a custom background color in the terminal
-if (has("autocmd") && !has("gui_running"))
-  augroup colors
-    autocmd!
-    " let s:background = { "gui": "#282C34", "cterm": "235", "cterm16": "0" }
-    let s:background = { "gui": "#000000", "cterm": "235", "cterm16": "0" }
-    autocmd ColorScheme * call onedark#set_highlight("Normal", { "bg": s:background }) "No `fg` setting
-  augroup END
-endif
-colorscheme onedark
+let g:seoul256_background = 233
+let g:seoul256_srgb = 1
+colorscheme seoul256
+set background=dark
+
 set termguicolors
 set shortmess=atI
 set textwidth=150
-set colorcolumn=80
+set colorcolumn=120
 set cursorcolumn
 set cursorline
 set cmdheight=2
@@ -223,7 +218,7 @@ let g:airline_enabled=1
 let g:airline_powerline_fonts=1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
-let g:airline_theme='onedark'
+let g:airline_theme='tomorrow'
 "}}}
 
 "CtrlSF

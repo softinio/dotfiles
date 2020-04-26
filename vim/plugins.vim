@@ -29,8 +29,8 @@ call plug#begin('~/.vim/plugged')
  Plug 'junegunn/gv.vim'
  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
  Plug 'junegunn/fzf.vim'
+ Plug 'junegunn/seoul256.vim'
  Plug 'junegunn/vim-slash'
- Plug 'joshdick/onedark.vim'
  Plug 'airblade/vim-gitgutter'
  Plug 'airblade/vim-rooter'
  Plug 'mileszs/ack.vim'
