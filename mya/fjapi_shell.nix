@@ -9,7 +9,7 @@ stdenv.mkDerivation rec {
     curl
     libffi
     git
-    postgresql_9_6
+    postgresql_11
     python37
     python37Packages.virtualenv
   ];
