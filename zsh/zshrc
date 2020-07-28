@@ -8,6 +8,12 @@ compinit -u
 # Detect OS
 platform='macosx'
 
+
+# Nix Workaround for https://github.com/NixOS/nix/issues/3616
+if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
+  . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
+fi
+
 # zsh
 export SPACESHIP_CHAR_SYMBOL="λ "
 updatezsh() {
@@ -41,13 +47,13 @@ alias gws="git status"
 alias gforksync="git fetch upstream && git merge upstream/master && git push origin master"
 alias grep='grep --color=auto'
 alias new-sbt='sbt new scala/scala-seed.g8'
-alias nixre="darwin-rebuild switch"
+alias nixre="home-manager switch"
 alias nixgc="nix-collect-garbage -d"
 alias nixq="nix-env -qa"
 alias nixupgrade="nix-channel --update; nix-env -iA nixpkgs.nix"
 alias nixup="nix-env -u"
 alias nixversion="nix eval nixpkgs.lib.version"
-if [ -e /Users/salar/.nix-profile/etc/profile.d/nix.sh ]; then . /Users/salar/.nix-profile/etc/profile.d/nix.sh; fi
+alias nixdaemon="sudo launchctl load /Library/LaunchDaemons/org.nixos.nix-daemon.plist && launchctl start org.nixos.nix-daemon"
 
 # vim / Neovim
 alias v='nvim'
@@ -82,11 +88,27 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+# Python
+source $HOME/.poetry/env
+
+# gitignore generate function
+gi () {
+  curl -fL https://www.gitignore.io/api/${(j:,:)@}
+}
+
+alias giscala='gi scala,vim,java,sbt > .gitignore'
+
 # ssh aliases
 alias sshfre1='ssh salar@fre1.softinio.net'
 alias moshfre1='mosh salar@fre1.softinio.net'
 
 # PATH
-export PATH=$HOME/bin:/run/current-system/sw/bin:$PATH
+export PATH=$HOME/bin:$PATH
 export JAVA_HOME="${$(readlink -e $(type -p java))%*/bin/java}"
+export NIX_PATH=$HOME/.nix-defexpr/channels${NIX_PATH:+:}$NIX_PATH
+
+# Needed as Nix not managing shell
+. "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh"
+
+
 

@@ -26,8 +26,8 @@ if ! has('nvim')
 else
     set nohlsearch
     if g:uname == 'Darwin'
-        let g:python_host_prog = '/run/current-system/sw/bin/python'
-        let g:python3_host_prog = '/run/current-system/sw/bin/python3'
+        let g:python_host_prog = '/Users/salar/.nix-profile/bin/python'
+        let g:python3_host_prog = '/Users/salar/.nix-profile/bin/python3'
         set guifont=SF\ Mono:h12
         let g:clipboard = {
               \ 'name': 'pbcopy',
@@ -300,6 +300,9 @@ endfunction
 
 nmap <A-Tab> :call SwitchBuffer()<CR>
 
+" autopair 
+let g:AutoPairsShortcutFastWrap='<A-e>'
+
 " netrw settings
 let g:netrw_banner=0        " disable annoying banner
 let g:netrw_browse_split=4  " open in prior window
@@ -329,10 +332,6 @@ let g:split_term_vertical = 1
 
 " json
 autocmd FileType json syntax match Comment +\/\/.\+$+
-
-" Vista
-nmap <F8> :Vista!!<CR>
-let g:vista_default_executive = 'coc'
 
 " START Configuration for coc.nvim
 " --------------------------------

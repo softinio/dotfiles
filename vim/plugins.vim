@@ -41,7 +41,6 @@ call plug#begin('~/.vim/plugged')
  Plug 'elzr/vim-json'
  Plug 'godlygeek/tabular'
  Plug 'plasticboy/vim-markdown'
- Plug 'liuchengxu/vista.vim'
 
  Plug 'vimlab/split-term.vim'
  Plug 'ndmitchell/ghcid', { 'rtp': 'plugins/nvim' }
