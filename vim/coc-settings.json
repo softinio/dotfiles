@@ -1,4 +1,3 @@
-// neovim: ~/.config/nvim/coc-settings.json
 
 {
   "coc.preferences.formatOnType": true,

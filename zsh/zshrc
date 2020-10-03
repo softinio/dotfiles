@@ -103,12 +103,13 @@ alias sshfre1='ssh salar@fre1.softinio.net'
 alias moshfre1='mosh salar@fre1.softinio.net'
 
 # PATH
-export PATH=$HOME/bin:$PATH
-export JAVA_HOME="${$(readlink -e $(type -p java))%*/bin/java}"
+export PATH=$HOME/.emacs.d/bin:$HOME/bin:$PATH
+export JAVA_HOME="${$(greadlink -e $(type -p java))%*/bin/java}"
 export NIX_PATH=$HOME/.nix-defexpr/channels${NIX_PATH:+:}$NIX_PATH
 
 # Needed as Nix not managing shell
 . "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh"
 
-
+# Macports
+alias portsupdate="sudo port -v selfupdate"
 

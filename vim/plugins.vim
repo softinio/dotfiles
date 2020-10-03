@@ -48,6 +48,10 @@ call plug#begin('~/.vim/plugged')
  Plug 'christoomey/vim-tmux-navigator'
  Plug 'tmux-plugins/vim-tmux'
 
+ Plug 'rhysd/git-messenger.vim'
+ Plug 'tveskag/nvim-blame-line'
+ Plug 'mzlogin/vim-markdown-toc'
+
 
  function! BuildComposer(info)
   if a:info.status != 'unchanged' || a:info.force
