@@ -60,6 +60,13 @@
     };
   };
 
+  programs.starship = {
+    enable = true;
+    settings = {
+      character.symbol = "λ";
+    };
+  };
+
   programs.fish = {
     enable = true;
 
@@ -113,11 +120,6 @@
 
     promptInit = ''
       any-nix-shell fish --info-right | source
-    '';
-
-    shellInit = ''
-      set -g theme_newline_prompt 'λ '
-      set -g theme_color_scheme dark
     '';
 
     shellAliases = {
